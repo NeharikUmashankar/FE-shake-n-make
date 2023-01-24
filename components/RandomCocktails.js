@@ -3,7 +3,7 @@ import { getRandomCocktail, getCocktailIngredients } from "../api";
 import { View, Text } from "react-native";
 import { Image } from "react-native";
 
-const RandomCocktails = () => {
+const RandomCocktails = ({navigation}) => {
   const [cocktail, setCocktail] = useState({});
   const [cocktailIngredients, setCocktailIngredients] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -37,6 +37,9 @@ const RandomCocktails = () => {
         })}
       </Text>
       <Text> Recipe: {cocktail.strInstructions}</Text>
+      <Stack.Navigator>
+        <Stack.Screen name='Random Cocktail' component={RandomCocktails} />
+      </Stack.Navigator>
     </View>
   );
 };
