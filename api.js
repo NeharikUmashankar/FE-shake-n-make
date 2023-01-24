@@ -14,7 +14,6 @@ export const getCocktailIngredients = (drink) => {
   const result = [];
   for (let element in drink) {
     if (drink[element] && element.includes("Ingredient")) {
-      console.log(drink[element]);
       result.push(drink[element]);
     }
   }
