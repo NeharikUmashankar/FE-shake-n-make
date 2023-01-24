@@ -22,7 +22,7 @@ const RandomCocktails = () => {
         <Text>Your random drink of the day: {cocktail.strDrink}</Text>
         <Image source={cocktail.strDrinkThumb} />
         <Text>
-          Ingredients needed:
+          Ingredients that are needed:
           {cocktailIngredients.map((ingredient) => {
             return <Text>{ingredient}</Text>;
           })}
