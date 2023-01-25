@@ -1,43 +1,54 @@
 import { useEffect, useState } from "react";
-import { getRandomCocktail, getCocktailIngredients } from "../api";
-import { View, Text } from "react-native";
+import { getRandomCocktail, getCocktailIngredients, getCocktailById, getCocktailMeasures } from "../api";
+import { View, Text ,ScrollView} from "react-native";
 import { Image } from "react-native";
 
 const Cocktail = ({navigation}) => {
 
-  const {cocktailName}  = navigation.state.params
-  
+  const {cocktailName, cocktailId}  = navigation.state.params
+
+    
   const [cocktail, setCocktail] = useState({});
+  const [cocktailMeasures, setCocktailMeasures] = useState({});
   const [cocktailIngredients, setCocktailIngredients] = useState([]);
   const [loading, setLoading] = useState(false);
 
+
   useEffect(() => {
-    getRandomCocktail().then((info) => {
+    setCocktailIngredients(getCocktailIngredients(cocktail));
+    setCocktailMeasures(getCocktailMeasures(cocktail));
+  }, [cocktail]);
+
+  useEffect(() => {
+    getCocktailById({cocktailId}).then((info) => {
       setCocktail(info);
       getCocktailIngredients(cocktail);
       setCocktailIngredients(getCocktailIngredients(cocktail));
       setLoading(false);
-    });
-  }, []);
-
-  useEffect(() => {
-    setLoading(true);
-    setCocktailIngredients(getCocktailIngredients(cocktail));
-  }, [cocktail]);
+    })
+  }, [])
 
   if (loading)
     return (
       <View>
-        <Text>Loading ingredients, please wait...</Text>
+        <Text>Loading Cocktail Info, please wait...</Text>
       </View>
     );
 
-  console.log(cocktailName);
 
   return (
-    <View>
+    <ScrollView>
       <Text>Info for {cocktailName}:</Text>
-    </View>
+      <Image source={cocktail.strDrinkThumb} />
+      <Text>
+        Ingredients needed:
+        {cocktailIngredients.map((ingredient, i) => {
+          return <Text>{ingredient}: {cocktailMeasures[i]} </Text>
+        })}
+      </Text>
+
+      <Text> Recipe: {cocktail.strInstructions}</Text>
+    </ScrollView>
   );
 };
 

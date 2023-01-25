@@ -1,11 +1,13 @@
 import { View, Text, Button } from "react-native";
 
 const HomeScreen = ({ navigation }) => {
+
+const adult =  navigation.state.params
   const randomPressHandler = () => {
-    navigation.navigate("Random cocktail");
+    navigation.navigate("Random cocktail", adult);
   };
   const AZPressHandler = () => {
-    navigation.navigate("Cocktails by Alphabet");
+    navigation.navigate("Alphabet List", adult);
   };
   return (
     <View>

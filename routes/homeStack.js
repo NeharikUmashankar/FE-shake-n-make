@@ -5,13 +5,23 @@ import RandomCocktails from "../components/RandomCocktails";
 import RandomButton from "../components/RandomButton";
 import CocktailsAZ from "../components/CocktailsAZ";
 import Cocktail from "../components/Cocktail";
+import Alphabet from "../components/Alphabet";
+import LandingScreen from "../components/LandingScreen";
 
 const screens = {
-  Home: {
+  'Welcome':{
+    screen: LandingScreen,
+  },
+
+  'Home': {
     screen: HomeScreen,
   },
   'Random cocktail': {
     screen: RandomCocktails,
+  },
+
+  'Alphabet List': {
+    screen: Alphabet,
   },
 
   'Cocktails by Alphabet': {

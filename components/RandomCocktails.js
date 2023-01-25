@@ -1,16 +1,20 @@
 import { useEffect, useState } from "react";
-import { getRandomCocktail, getCocktailIngredients } from "../api";
+import { getRandomCocktail, getCocktailIngredients, getCocktailMeasures } from "../api";
 import { View, Text } from "react-native";
 import { Image } from "react-native";
 import RandomButton from "./RandomButton";
 
-const RandomCocktails = () => {
+
+const RandomCocktails = ({navigation }) => {
+
+  const {over18} = navigation.state.params
   const [cocktail, setCocktail] = useState({});
+  const [cocktailMeasures, setCocktailMeasures] = useState({});
   const [cocktailIngredients, setCocktailIngredients] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    getRandomCocktail().then((info) => {
+    getRandomCocktail(over18).then((info) => {
       setCocktail(info);
       getCocktailIngredients(cocktail);
       setCocktailIngredients(getCocktailIngredients(cocktail));
@@ -21,6 +25,7 @@ const RandomCocktails = () => {
   useEffect(() => {
     setLoading(true);
     setCocktailIngredients(getCocktailIngredients(cocktail));
+    setCocktailMeasures(getCocktailMeasures(cocktail));
   }, [cocktail]);
 
   if (loading)
@@ -36,8 +41,8 @@ const RandomCocktails = () => {
       <Image source={cocktail.strDrinkThumb} />
       <Text>
         Ingredients needed:
-        {cocktailIngredients.map((ingredient) => {
-          return <Text>{ingredient} </Text>;
+        {cocktailIngredients.map((ingredient, i) => {
+          return <Text>{ingredient}: {cocktailMeasures[i]} </Text>;
         })}
       </Text>
       <Text> Recipe: {cocktail.strInstructions}</Text>
