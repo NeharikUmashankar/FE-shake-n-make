@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getRandomCocktail, getCocktailIngredients } from "../api";
 import { View, Text } from "react-native";
 import { Image } from "react-native";
+import RandomButton from "./RandomButton";
 
 
 const RandomCocktails = ({ navigation }) => {
@@ -38,6 +39,7 @@ const RandomCocktails = ({ navigation }) => {
         })}
       </Text>
       <Text> Recipe: {cocktail.strInstructions}</Text>
+      <RandomButton />
     </View>
   );
 };

@@ -1,16 +1,15 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View, Button, Text } from "react-native";
-import RandomCocktails from "./RandomCocktails";
 
 
-const RandomButton = (({navigation}) => {
+
+const HomeButton = (({navigation}) => {
     return (
         <View style = {styles.container}>
         <Button 
-        title='Random Cocktail' 
+        title='Home' 
         onPress={() => {
-            navigation.navigate('Random Cocktail')
-            // return <RandomCocktails/>
+            navigation.navigate('HomeScreen')
         }}
         />
         <StatusBar style = 'auto'/>
@@ -18,7 +17,7 @@ const RandomButton = (({navigation}) => {
     )
 })
 
-export default RandomButton;
+export default HomeButton;
 
 const styles = StyleSheet.create({
     container: {
@@ -28,9 +27,3 @@ const styles = StyleSheet.create({
       justifyContent: "center",
     },
   });
-  
-
-
-
-
-
