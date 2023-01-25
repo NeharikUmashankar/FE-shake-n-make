@@ -6,20 +6,23 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import RandomButton from "./components/RandomButton";
 import HomeScreen from "./components/HomeScreen";
 import HomeButton from "./components/HomeButton";
+import Navigator from './routes/homeStack' 
+// 'Navigator' is what I'm choosing to call
 
 const Stack = createNativeStackNavigator();
 
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="HomeButton" component={HomeButton} />
-        <Stack.Screen name="Random" component={RandomButton} options = {title = 'Random Cocktail'}/>
-        <Stack.Screen name="Random Cocktail" component={RandomCocktails} options = {title = 'Random Cocktail'}/>
-        <Stack.Screen name="HomeScreen" component={HomeScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Navigator/>
+    // <NavigationContainer>
+    //   <Stack.Navigator>
+    //     <Stack.Screen name="HomeButton" component={HomeButton} />
+    //     <Stack.Screen name="Random" component={RandomButton} options = {title = 'Random Cocktail'}/>
+    //     <Stack.Screen name="Random Cocktail" component={RandomCocktails} options = {title = 'Random Cocktail'}/>
+    //     <Stack.Screen name="HomeScreen" component={HomeScreen} />
+    //   </Stack.Navigator>
+    // </NavigationContainer>
   );
 }
 

@@ -19,3 +19,10 @@ export const getCocktailIngredients = (drink) => {
   }
   return result;
 };
+
+export const getCocktailsByLetter = (letter) => {
+  return cocktailAPI.get(`/search.php?f=${letter}`).then(({data}) => {
+    return data;
+  })
+
+}

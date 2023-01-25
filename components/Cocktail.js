@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import { getRandomCocktail, getCocktailIngredients } from "../api";
 import { View, Text } from "react-native";
 import { Image } from "react-native";
-import RandomButton from "./RandomButton";
 
-const RandomCocktails = () => {
+const Cocktail = ({navigation}) => {
+
+  const {cocktailName}  = navigation.state.params
+  
   const [cocktail, setCocktail] = useState({});
   const [cocktailIngredients, setCocktailIngredients] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -30,20 +32,13 @@ const RandomCocktails = () => {
       </View>
     );
 
+  console.log(cocktailName);
+
   return (
     <View>
-      <Text>Your randomly generated drink: {cocktail.strDrink}</Text>
-      <Image source={cocktail.strDrinkThumb} />
-      <Text>
-        Ingredients needed:
-        {cocktailIngredients.map((ingredient) => {
-          return <Text>{ingredient} </Text>;
-        })}
-      </Text>
-      <Text> Recipe: {cocktail.strInstructions}</Text>
-      <RandomButton />
+      <Text>Info for {cocktailName}:</Text>
     </View>
   );
 };
 
-export default RandomCocktails;
+export default Cocktail;
