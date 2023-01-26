@@ -8,40 +8,44 @@ import Alphabet from "../components/Alphabet";
 import LandingScreen from "../components/LandingScreen";
 import NonAL from "../components/NonAL";
 import FilteredCocktails from "../components/FilteredCocktails";
-
+import Filter from "../components/Filter";
 
 const screens = {
-  'Welcome':{
+  Welcome: {
     screen: LandingScreen,
   },
 
-  'Home': {
+  Home: {
     screen: HomeScreen,
   },
 
-  'Virgin?': {
+  "Virgin?": {
     screen: NonAL,
   },
 
-  'Random cocktail': {
+  "Random cocktail": {
     screen: RandomCocktails,
   },
 
-  'Alphabet List': {
+  "Alphabet List": {
     screen: Alphabet,
   },
 
-  'Cocktails by Alphabet': {
+  "Cocktails by Alphabet": {
     screen: CocktailsAZ,
   },
 
-  'Cocktail' : {
-    screen: Cocktail
+  Cocktail: {
+    screen: Cocktail,
   },
 
-  'Filtered Cocktails' : {
-    screen: FilteredCocktails
-  }
+  Filter: {
+    screen: Filter,
+  },
+
+  "Filtered Cocktails": {
+    screen: FilteredCocktails,
+  },
 };
 
 const HomeStack = createStackNavigator(screens);

@@ -1,16 +1,20 @@
-import { View ,Text} from "react-native"
-import { getFilteredCocktails } from "../api"
+import { View, Text } from "react-native";
+import { getFilteredCocktails } from "../api";
+import { useEffect } from "react";
 
-const FilteredCocktails = ({navigation}) => {
-    const {ingredients} = navigation.state.params
-    getFilteredCocktails(ingredients)
-    return (
-        <View>
-            <Text>
-        Filtered cocktails coming soon....
-            </Text>
-        </View>
-    )
-}
+const FilteredCocktails = ({ navigation }) => {
+  const { ingredients, loading } = navigation.state.params;
 
-export default FilteredCocktails
+  if (loading) return <View><Text>Loading, please wait...</Text></View>
+  console.log(ingredients)
+
+
+
+  return (
+    <View>
+      <Text>Filtered cocktails coming soon....</Text>
+    </View>
+  );
+};
+
+export default FilteredCocktails;

@@ -4,7 +4,8 @@ import { useState } from "react";
 
 const HomeScreen = ({ navigation }) => {
   const adult = navigation.state.params;
-  const {over18} = adult;
+  const { over18 } = adult;
+
   const randomPressHandler = () => {
     navigation.navigate("Random cocktail", adult);
   };
@@ -13,30 +14,23 @@ const HomeScreen = ({ navigation }) => {
   };
 
   const choicePressHandler = () => {
-    navigation.navigate('Virgin?')
-  }
-  const [text, setText] = useState("")
-const [sumbittedText, setSubmittedText] = useState("")
-const [loading, setLoading] = useState(false)
+    navigation.navigate("Virgin?");
+  };
 
-const FilterHandlePress = () => {
-  setLoading(true)
-    setSubmittedText(text)
-    navigation.navigate("Filtered Cocktails", {ingredients:sumbittedText})
-    setLoading(false)
-}
   return (
     <View>
       <Text>Feelin' thirsty? Select an option below:</Text>
       <Button title="Get a random cocktail" onPress={randomPressHandler} />
       <Button title="Get cocktails by letter" onPress={AZPressHandler} />
-      {over18 === true ? <Button title="Non-alcoholic drinks" onPress={choicePressHandler}/> : null}
-      <Text>Filter by Ingredient</Text>
-        <TextInput style={styles.input} onChangeText={(inputText) => {setText(inputText)}} value={text} placeholder="Gin, Vodka, Orange"></TextInput>
-        <Button title="Submit" onPress={FilterHandlePress}></Button>
+      {over18 === true ? (
+        <Button title="Non-alcoholic drinks" onPress={choicePressHandler} />
+      ) : null}
+
+      <Filter />
     </View>
   );
 };
+
 const styles = StyleSheet.create({
   input: {
     height: 40,

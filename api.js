@@ -68,16 +68,20 @@ export const getCocktailMeasures = (drink) => {
 
 export const getNonAL = () => {
   return cocktailAPI.get("/filter.php?a=Non_Alcoholic").then(({ data }) => {
-    return data.drinks
+    return data.drinks;
   });
 };
 
 export const getFilteredCocktails = (ingredient) => {
-  let url = `/filter.php?`
-  const splitIng = ingredient.split(",")
-  for (let item of splitIng) {
-    url += `i=${item}&`
+  if (ingredient.length === 0) {
+    return "No ingredients provided";
   }
-  console.log(url)
+  let url = `/filter.php?`;
+  const splitIng = ingredient.split(",");
+  for (let item of splitIng) {
+    url += `i=${item}&`;
+  }
+  console.log(url);
+
   // return cocktailAPI.get()
-}
+};
