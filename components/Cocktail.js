@@ -1,18 +1,21 @@
 import { useEffect, useState } from "react";
-import { getRandomCocktail, getCocktailIngredients, getCocktailById, getCocktailMeasures } from "../api";
-import { View, Text ,ScrollView} from "react-native";
+import {
+  getCocktailIngredients,
+  getCocktailById,
+  getCocktailMeasures,
+} from "../api";
+import { View, Text, ScrollView, StyleSheet } from "react-native";
 import { Image } from "react-native";
+import ImageViewer from "./ImageViewer";
 
-const Cocktail = ({navigation}) => {
 
-  const {cocktailName, cocktailId}  = navigation.state.params
+const Cocktail = ({ navigation }) => {
+  const { cocktailName, cocktailId } = navigation.state.params;
 
-    
   const [cocktail, setCocktail] = useState({});
   const [cocktailMeasures, setCocktailMeasures] = useState({});
   const [cocktailIngredients, setCocktailIngredients] = useState([]);
   const [loading, setLoading] = useState(false);
-
 
   useEffect(() => {
     setCocktailIngredients(getCocktailIngredients(cocktail));
@@ -20,13 +23,15 @@ const Cocktail = ({navigation}) => {
   }, [cocktail]);
 
   useEffect(() => {
-    getCocktailById({cocktailId}).then((info) => {
+    getCocktailById({ cocktailId }).then((info) => {
       setCocktail(info);
       getCocktailIngredients(cocktail);
       setCocktailIngredients(getCocktailIngredients(cocktail));
       setLoading(false);
-    })
-  }, [])
+    });
+  }, []);
+
+  const placeholderImage = cocktail.strDrinkThumb;
 
   if (loading)
     return (
@@ -35,15 +40,20 @@ const Cocktail = ({navigation}) => {
       </View>
     );
 
-
   return (
     <ScrollView>
       <Text>Info for {cocktailName}:</Text>
-      <Image source={cocktail.strDrinkThumb} />
+      <View>
+        <ImageViewer placeholderImageSource={placeholderImage}></ImageViewer>
+      </View>
       <Text>
         Ingredients needed:
         {cocktailIngredients.map((ingredient, i) => {
-          return <Text>{ingredient}: {cocktailMeasures[i]} </Text>
+          return (
+            <Text>
+              {ingredient}: {cocktailMeasures[i]}{" "}
+            </Text>
+          );
         })}
       </Text>
 
@@ -51,5 +61,10 @@ const Cocktail = ({navigation}) => {
     </ScrollView>
   );
 };
+
+const styles = StyleSheet.create({
+  image: { width: 320, height: 440, borderRadius: 18 },
+});
+
 
 export default Cocktail;

@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
-import { getRandomCocktail, getCocktailIngredients, getCocktailMeasures } from "../api";
-import { View, Text } from "react-native";
-import { Image } from "react-native";
+import {
+  getRandomCocktail,
+  getCocktailIngredients,
+  getCocktailMeasures,
+} from "../api";
+import { View, Text, Image } from "react-native";
 import RandomButton from "./RandomButton";
 
-
-const RandomCocktails = ({navigation }) => {
-
-  const {over18} = navigation.state.params
+const RandomCocktails = ({ navigation }) => {
+  const { over18 } = navigation.state.params;
   const [cocktail, setCocktail] = useState({});
   const [cocktailMeasures, setCocktailMeasures] = useState({});
   const [cocktailIngredients, setCocktailIngredients] = useState([]);
@@ -42,7 +43,11 @@ const RandomCocktails = ({navigation }) => {
       <Text>
         Ingredients needed:
         {cocktailIngredients.map((ingredient, i) => {
-          return <Text>{ingredient}: {cocktailMeasures[i]} </Text>;
+          return (
+            <Text key={ingredient}>
+              {ingredient}: {cocktailMeasures[i]}{" "}
+            </Text>
+          );
         })}
       </Text>
       <Text> Recipe: {cocktail.strInstructions}</Text>

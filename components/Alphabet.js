@@ -15,7 +15,7 @@ const Alphabet = ({ navigation }) => {
       <Button title="C" onPress={() => {
             navigation.navigate("Cocktails by Alphabet", {letter:"C"})
       }} />
-      <Button title="C" onPress={() => {
+      <Button title="D" onPress={() => {
             navigation.navigate("Cocktails by Alphabet", {letter:"D"})
       }} />
       <Button title="E" onPress={() => {
