@@ -1,11 +1,10 @@
 import { getCocktailsByLetter } from "../api";
 import { useState, useEffect } from "react";
-import { View, Text, Button ,ScrollView} from "react-native";
+import { View, Text, Button, ScrollView } from "react-native";
+// import myTrueContext from './LandingScreen'
 
 const CocktailsAZ = ({ navigation }) => {
-  console.log(navigation.state.params)
-
- const {letter} = navigation.state.params
+  const { letter } = navigation.state.params;
   const [cocktails, setCocktails] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -17,7 +16,7 @@ const CocktailsAZ = ({ navigation }) => {
         const newCocktail = [...currCocktails];
 
         for (let drink of drinks) {
-          newCocktail.push({name:drink.strDrink, id:drink.idDrink});
+          newCocktail.push({ name: drink.strDrink, id: drink.idDrink });
         }
         return newCocktail;
       });
@@ -39,12 +38,12 @@ const CocktailsAZ = ({ navigation }) => {
       {cocktails.map((cocktail) => {
         return (
           <Button
-          key={cocktail.name}
+            key={cocktail.name}
             title={cocktail.name}
             onPress={() => {
               navigation.navigate("Cocktail", {
                 cocktailName: cocktail.name,
-                cocktailId: cocktail.id
+                cocktailId: cocktail.id,
               });
             }}
           />

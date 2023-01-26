@@ -8,7 +8,6 @@ import { View, Text, ScrollView, StyleSheet } from "react-native";
 import { Image } from "react-native";
 import ImageViewer from "./ImageViewer";
 
-
 const Cocktail = ({ navigation }) => {
   const { cocktailName, cocktailId } = navigation.state.params;
 
@@ -41,12 +40,14 @@ const Cocktail = ({ navigation }) => {
     );
 
   return (
-    <ScrollView> 
+    <ScrollView>
       <Text>Info for {cocktailName}:</Text>
       <View>
-        <ImageViewer placeholderImageSource={{uri: placeholderImage}}></ImageViewer>
+        <ImageViewer
+          placeholderImageSource={{ uri: placeholderImage }}
+        ></ImageViewer>
       </View>
-      <Text>
+      <Text key={cocktailName}>
         Ingredients needed:
         {cocktailIngredients.map((ingredient, i) => {
           return (
@@ -61,7 +62,5 @@ const Cocktail = ({ navigation }) => {
     </ScrollView>
   );
 };
-
-
 
 export default Cocktail;
