@@ -36,9 +36,21 @@ export const getCocktailIngredients = (drink) => {
   return result;
 };
 
-export const getCocktailsByLetter = (letter) => {
+export const getCocktailsByLetter = (letter, adult = false) => {
   return cocktailAPI.get(`/search.php?f=${letter}`).then(({ data }) => {
-    return data;
+    if (adult) {
+      return data;
+    }
+   else {
+    const result = []
+    for (let cocktail of data.drinks ){
+      console.log(cocktail.strAlcoholic)
+      if (cocktail.strAlcoholic === 'Non alcoholic') {
+        result.push(cocktail)
+      }
+    }
+    return {"drinks":result}
+   }
   });
 };
 

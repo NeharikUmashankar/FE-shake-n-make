@@ -16,6 +16,11 @@ const screens = {
   'Home': {
     screen: HomeScreen,
   },
+
+  'Virgin?': {
+    screen: ALChoice,
+  },
+
   'Random cocktail': {
     screen: RandomCocktails,
   },
