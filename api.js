@@ -13,7 +13,6 @@ export const getRandomCocktail = (adult = false) => {
     return cocktailAPI
       .get("/filter.php?a=Non_Alcoholic")
       .then(({ data }) => {
-        console.log(data.drinks.length);
         const randomIndex = Math.floor(Math.random() * data.drinks.length);
         return data.drinks[randomIndex].idDrink;
       })
@@ -25,7 +24,6 @@ export const getRandomCocktail = (adult = false) => {
   }
 };
 
-//https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=12560
 export const getCocktailIngredients = (drink) => {
   const result = [];
   for (let element in drink) {
@@ -40,17 +38,15 @@ export const getCocktailsByLetter = (letter, adult = false) => {
   return cocktailAPI.get(`/search.php?f=${letter}`).then(({ data }) => {
     if (adult) {
       return data;
-    }
-   else {
-    const result = []
-    for (let cocktail of data.drinks ){
-      console.log(cocktail.strAlcoholic)
-      if (cocktail.strAlcoholic === 'Non alcoholic') {
-        result.push(cocktail)
+    } else {
+      const result = [];
+      for (let cocktail of data.drinks) {
+        if (cocktail.strAlcoholic === "Non alcoholic") {
+          result.push(cocktail);
+        }
       }
+      return { drinks: result };
     }
-    return {"drinks":result}
-   }
   });
 };
 
@@ -68,4 +64,10 @@ export const getCocktailMeasures = (drink) => {
     }
   }
   return result;
+};
+
+export const getNonAL = () => {
+  return cocktailAPI.get("/filter.php?a=Non_Alcoholic").then(({ data }) => {
+    return data.drinks
+  });
 };

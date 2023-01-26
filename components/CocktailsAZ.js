@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { View, Text, Button ,ScrollView} from "react-native";
 
 const CocktailsAZ = ({ navigation }) => {
+  console.log(navigation.state.params)
 
  const {letter} = navigation.state.params
   const [cocktails, setCocktails] = useState([]);
@@ -25,8 +26,6 @@ const CocktailsAZ = ({ navigation }) => {
     });
   }, []);
 
-  const AZpressHandler = () => {};
-
   if (loading)
     return (
       <View>
@@ -40,6 +39,7 @@ const CocktailsAZ = ({ navigation }) => {
       {cocktails.map((cocktail) => {
         return (
           <Button
+          key={cocktail.name}
             title={cocktail.name}
             onPress={() => {
               navigation.navigate("Cocktail", {

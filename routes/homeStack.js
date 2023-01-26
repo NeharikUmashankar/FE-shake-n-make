@@ -2,11 +2,11 @@ import { createStackNavigator } from "react-navigation-stack";
 import { createAppContainer } from "react-navigation";
 import HomeScreen from "../components/HomeScreen";
 import RandomCocktails from "../components/RandomCocktails";
-import RandomButton from "../components/RandomButton";
 import CocktailsAZ from "../components/CocktailsAZ";
 import Cocktail from "../components/Cocktail";
 import Alphabet from "../components/Alphabet";
 import LandingScreen from "../components/LandingScreen";
+import NonAL from "../components/NonAL";
 
 const screens = {
   'Welcome':{
@@ -18,7 +18,7 @@ const screens = {
   },
 
   'Virgin?': {
-    screen: ALChoice,
+    screen: NonAL,
   },
 
   'Random cocktail': {
