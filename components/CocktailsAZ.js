@@ -1,15 +1,15 @@
 import { getCocktailsByLetter } from "../api";
 import { useState, useEffect } from "react";
 import { View, Text, Button, ScrollView } from "react-native";
-// import myTrueContext from './LandingScreen'
 
 const CocktailsAZ = ({ navigation }) => {
-  const { letter } = navigation.state.params;
+  const { letter ,over18} = navigation.state.params;
+  console.log(over18)
   const [cocktails, setCocktails] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    getCocktailsByLetter(letter).then(({ drinks }) => {
+    getCocktailsByLetter(letter, over18).then(({ drinks }) => {
       setLoading(true);
 
       setCocktails((currCocktails) => {

@@ -71,3 +71,13 @@ export const getNonAL = () => {
     return data.drinks
   });
 };
+
+export const getFilteredCocktails = (ingredient) => {
+  let url = `/filter.php?`
+  const splitIng = ingredient.split(",")
+  for (let item of splitIng) {
+    url += `i=${item}&`
+  }
+  console.log(url)
+  // return cocktailAPI.get()
+}
