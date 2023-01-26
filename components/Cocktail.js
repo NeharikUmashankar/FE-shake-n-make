@@ -41,10 +41,10 @@ const Cocktail = ({ navigation }) => {
     );
 
   return (
-    <ScrollView>
+    <ScrollView> 
       <Text>Info for {cocktailName}:</Text>
       <View>
-        <ImageViewer placeholderImageSource={placeholderImage}></ImageViewer>
+        <ImageViewer placeholderImageSource={{uri: placeholderImage}}></ImageViewer>
       </View>
       <Text>
         Ingredients needed:
@@ -62,9 +62,6 @@ const Cocktail = ({ navigation }) => {
   );
 };
 
-const styles = StyleSheet.create({
-  image: { width: 320, height: 440, borderRadius: 18 },
-});
 
 
 export default Cocktail;

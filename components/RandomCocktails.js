@@ -6,6 +6,7 @@ import {
 } from "../api";
 import { View, Text, Image } from "react-native";
 import RandomButton from "./RandomButton";
+import ImageViewer from "./ImageViewer";
 
 const RandomCocktails = ({ navigation }) => {
   const { over18 } = navigation.state.params;
@@ -29,6 +30,8 @@ const RandomCocktails = ({ navigation }) => {
     setCocktailMeasures(getCocktailMeasures(cocktail));
   }, [cocktail]);
 
+  const randomCocktailPlaceholderImage = cocktail.strDrinkThumb;
+
   if (loading)
     return (
       <View>
@@ -39,7 +42,7 @@ const RandomCocktails = ({ navigation }) => {
   return (
     <View>
       <Text>Your randomly generated drink: {cocktail.strDrink}</Text>
-      <Image source={cocktail.strDrinkThumb} />
+      <ImageViewer placeholderImageSource={{uri: randomCocktailPlaceholderImage}}></ImageViewer>
       <Text>
         Ingredients needed:
         {cocktailIngredients.map((ingredient, i) => {
