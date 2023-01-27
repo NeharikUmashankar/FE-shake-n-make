@@ -8,7 +8,7 @@ import Alphabet from "../components/Alphabet";
 import LandingScreen from "../components/LandingScreen";
 import NonAL from "../components/NonAL";
 import FilteredCocktails from "../components/FilteredCocktails";
-import Filter from "../components/Filter";
+import FilterInput from "../components/FilterInput";
 
 const screens = {
   Welcome: {
@@ -39,8 +39,8 @@ const screens = {
     screen: Cocktail,
   },
 
-  Filter: {
-    screen: Filter,
+  'Filter Input': {
+    screen: FilterInput,
   },
 
   "Filtered Cocktails": {

@@ -1,5 +1,5 @@
 import { View, Text, Button, TextInput, StyleSheet } from "react-native";
-import Filter from "./Filter";
+import FilterInput from "./FilterInput";
 import { useState } from "react";
 
 const HomeScreen = ({ navigation }) => {
@@ -24,9 +24,8 @@ const HomeScreen = ({ navigation }) => {
       <Button title="Get cocktails by letter" onPress={AZPressHandler} />
       {over18 === true ? (
         <Button title="Non-alcoholic drinks" onPress={choicePressHandler} />
-      ) : null}
-
-      <Filter />
+      ) : null} 
+      <FilterInput navigation= {navigation} />
     </View>
   );
 };

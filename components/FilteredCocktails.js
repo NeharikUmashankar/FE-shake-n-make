@@ -5,10 +5,13 @@ import { useEffect } from "react";
 const FilteredCocktails = ({ navigation }) => {
   const { ingredients, loading } = navigation.state.params;
 
-  if (loading) return <View><Text>Loading, please wait...</Text></View>
-  console.log(ingredients)
-
-
+  if (loading)
+    return (
+      <View>
+        <Text>Loading, please wait...</Text>
+      </View>
+    );
+  console.log(ingredients);
 
   return (
     <View>
