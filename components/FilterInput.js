@@ -1,22 +1,28 @@
 import { View, StyleSheet, TextInput, Text, Button } from "react-native";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const Filter = ({ navigation }) => {
+const FilterInput = ({ navigation }) => {
   const [text, setText] = useState("");
-  const [sumbittedText, setSubmittedText] = useState(undefined);
-  const [loading, setLoading] = useState(false);
+  const [sumbittedText, setSubmittedText] = useState("");
+  const [firstLoad, setFirstLoad] = useState(true);
 
   const handlePress = () => {
-    setLoading(false);
     setSubmittedText(text);
-    setLoading(true);
-    // navigation.navigate("Filtered Cocktails", { ingredients: sumbittedText });
+    setFirstLoad(false)
   };
+
+  useEffect(() => {
+    if (!firstLoad) {
+      navigation.navigate("Filtered Cocktails", { ingredients: sumbittedText });
+    }
+  }, [sumbittedText]);
+
+
 
   return (
     <View>
       <Text>Filter by Ingredient</Text>
-      <TextInput
+      <TextInput 
         style={styles.input}
         onChangeText={(inputText) => {
           setText(inputText);
@@ -38,4 +44,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Filter;
+export default FilterInput;

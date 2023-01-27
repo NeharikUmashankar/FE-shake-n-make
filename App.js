@@ -7,14 +7,20 @@ import RandomButton from "./components/RandomButton";
 import HomeScreen from "./components/HomeScreen";
 import HomeButton from "./components/HomeButton";
 import Navigator from './routes/homeStack' 
+import { useState } from "react";
+import { UserContext } from "./components/UserContext";
 // 'Navigator' is what I'm choosing to call
 
 const Stack = createNativeStackNavigator();
 
 
 export default function App() {
+  const [loggedUser,setLoggedUser] = useState("")
+  
   return (
-    <Navigator/>
+    <UserContext.Provider value={{loggedUser,setLoggedUser}}>
+      <Navigator/>
+    </UserContext.Provider>
     // <NavigationContainer>
     //   <Stack.Navigator>
     //     <Stack.Screen name="HomeButton" component={HomeButton} />

@@ -1,6 +1,8 @@
 import { View, Text, Button, ScrollView } from "react-native";
 
-const Alphabet = ({ navigation }) => {
+const Alphabet = ({ navigation }, props) => {
+
+      console.log(props)
       const {over18} = navigation.state.params
   const Handler = () => {
     navigation.navigate("Cocktails by Alphabet");
@@ -90,3 +92,4 @@ const Alphabet = ({ navigation }) => {
 };
 
 export default Alphabet;
+

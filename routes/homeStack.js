@@ -8,8 +8,10 @@ import Alphabet from "../components/Alphabet";
 import LandingScreen from "../components/LandingScreen";
 import NonAL from "../components/NonAL";
 import FilteredCocktails from "../components/FilteredCocktails";
-import Filter from "../components/Filter";
 import Accelerometer from "../components/Accelerometer";
+import FilterInput from "../components/FilterInput";
+import Login from "../components/Login";
+
 
 const screens = {
   Welcome: {
@@ -40,13 +42,16 @@ const screens = {
     screen: Cocktail,
   },
 
-  Filter: {
-    screen: Filter,
+  'Filter Input': {
+    screen: FilterInput,
   },
 
   "Filtered Cocktails": {
     screen: FilteredCocktails,
   },
+  "Login": {
+    screen: Login,
+  }
 };
 
 const HomeStack = createStackNavigator(screens);
