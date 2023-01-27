@@ -5,8 +5,8 @@ const cocktailAPI = axios.create({
 });
 
 const databaseAPI = axios.create({
-  baseURL: "https://shake-n-make.onrender.com/api"
-})
+  baseURL: "https://shake-n-make.onrender.com/api",
+});
 
 export const getRandomCocktail = (adult = false) => {
   if (adult) {
@@ -77,35 +77,30 @@ export const getNonAL = () => {
 };
 
 export const getFilteredCocktails = (ingredient) => {
-  
   if (ingredient.length === 0) {
     return "No ingredients provided";
   }
   let url = `/filter.php?`;
   const splitIng = ingredient.split(",");
-  
+
   for (let item of splitIng) {
     if (item.startsWith(" ")) {
-      item=item.slice(1)
+      item = item.slice(1);
     }
     if (item.endsWith(" ")) {
-      item=item.slice(0,-1)
+      item = item.slice(0, -1);
     }
     url += `i=${item}&`;
   }
 
-
-  return cocktailAPI.get(url)
-  .then(({data}) => {
+  return cocktailAPI.get(url).then(({ data }) => {
     // console.log(data.drinks[0],"<<inside the api.js")
-    return data.drinks
-  })
+    return data.drinks;
+  });
 };
 
 export const getUserByUsername = (username) => {
-  return databaseAPI.get(`/users/u/${username}`)
-  .then(({data:{user}}) => {
-    return user  
-  })
-}
-
+  return databaseAPI.get(`/users/u/${username}`).then(({ data: { user } }) => {
+    return user;
+  });
+};

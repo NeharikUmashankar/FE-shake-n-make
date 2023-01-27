@@ -1,15 +1,28 @@
 import { getCocktailsByLetter } from "../api";
 import { useState, useEffect } from "react";
 import { View, Text, Button, ScrollView } from "react-native";
+import { useContext } from "react";
+import { AdultContext } from "./AdultContext";
+import { UserContext } from "./UserContext";
 
 const CocktailsAZ = ({ navigation }) => {
-  const { letter ,over18} = navigation.state.params;
-  console.log(over18)
+  const { letter } = navigation.state.params;
+
+  const { over18 } = useContext(AdultContext);
+  const { loggedUser } = useContext(UserContext);
+
   const [cocktails, setCocktails] = useState([]);
   const [loading, setLoading] = useState(false);
 
+  let adult;
+  if (loggedUser) {
+    adult = loggedUser.over18;
+  } else {
+    adult = over18;
+  }
+
   useEffect(() => {
-    getCocktailsByLetter(letter, over18).then(({ drinks }) => {
+    getCocktailsByLetter(letter, adult).then(({ drinks }) => {
       setLoading(true);
 
       setCocktails((currCocktails) => {

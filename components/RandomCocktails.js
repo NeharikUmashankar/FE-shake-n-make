@@ -5,22 +5,35 @@ import {
   getCocktailMeasures,
 } from "../api";
 import { View, Text, Image } from "react-native";
-import RandomButton from "./RandomButton";
 import ImageViewer from "./ImageViewer";
 import Accelerometer from "../components/Accelerometer";
 import cocktailAccelerometer from "../components/Accelerometer";
+import { useContext } from "react";
+import { AdultContext } from "./AdultContext";
+import { UserContext } from "./UserContext";
 
 
 const RandomCocktails = ({ navigation }) => {
-  const { over18 } = navigation.state.params;
   const [cocktail, setCocktail] = useState({});
   const [cocktailMeasures, setCocktailMeasures] = useState({});
   const [cocktailIngredients, setCocktailIngredients] = useState([]);
   const [loading, setLoading] = useState(false);
   const [refresh, setRefresh] = useState(false);
+  const {over18, setOver18} = useContext(AdultContext)
+  const { loggedUser, setLoggedUser } = useContext(UserContext)
+
+  let adult;
+
+
+  if (loggedUser){
+    adult = loggedUser.over18
+  }
+  else{
+    adult = over18
+  }
 
   useEffect(() => {
-    getRandomCocktail(over18).then((info) => {
+    getRandomCocktail(adult).then((info) => {
       setCocktail(info);
       getCocktailIngredients(cocktail);
       setCocktailIngredients(getCocktailIngredients(cocktail));
