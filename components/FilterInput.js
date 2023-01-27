@@ -22,7 +22,7 @@ const FilterInput = ({ navigation }) => {
   return (
     <View>
       <Text>Filter by Ingredient</Text>
-      <TextInput
+      <TextInput 
         style={styles.input}
         onChangeText={(inputText) => {
           setText(inputText);

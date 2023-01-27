@@ -9,6 +9,7 @@ import LandingScreen from "../components/LandingScreen";
 import NonAL from "../components/NonAL";
 import FilteredCocktails from "../components/FilteredCocktails";
 import FilterInput from "../components/FilterInput";
+import Login from "../components/Login";
 
 const screens = {
   Welcome: {
@@ -46,6 +47,9 @@ const screens = {
   "Filtered Cocktails": {
     screen: FilteredCocktails,
   },
+  "Login": {
+    screen: Login,
+  }
 };
 
 const HomeStack = createStackNavigator(screens);
