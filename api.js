@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const cocktailAPI = axios.create({
-  baseURL: "https://www.thecocktaildb.com/api/json/v1/1",
+  baseURL: "https://www.thecocktaildb.com/api/json/v2/9973533",
 });
 
 const databaseAPI = axios.create({
@@ -80,7 +80,7 @@ export const getFilteredCocktails = (ingredient) => {
   if (ingredient.length === 0) {
     return "No ingredients provided";
   }
-  let url = `/filter.php?`;
+  let url = `/filter.php?i=`;
   const splitIng = ingredient.split(",");
 
   for (let item of splitIng) {
@@ -90,11 +90,11 @@ export const getFilteredCocktails = (ingredient) => {
     if (item.endsWith(" ")) {
       item = item.slice(0, -1);
     }
-    url += `i=${item}&`;
+    item.replace(" ","_")
+    url += `${item},`;
   }
 
-  return cocktailAPI.get(url).then(({ data }) => {
-    // console.log(data.drinks[0],"<<inside the api.js")
+  return cocktailAPI.get(url.slice(0,-1)).then(({ data }) => {
     return data.drinks;
   });
 };
@@ -104,3 +104,4 @@ export const getUserByUsername = (username) => {
     return user;
   });
 };
+

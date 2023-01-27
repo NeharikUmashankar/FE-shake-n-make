@@ -28,6 +28,10 @@ const LandingScreen = ({ navigation }) => {
       <Button title="Login" onPress={() => {
         navigation.navigate("Login")
       }}></Button>
+      <View>
+        <Text>Not got an account? Click below to sign up.</Text>
+        <Button onPress={() => {navigation.navigate("Sign up")}} title="Sign up"></Button>
+      </View>
     </View>
   );
 };

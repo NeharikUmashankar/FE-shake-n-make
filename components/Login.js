@@ -3,13 +3,14 @@ import { useState } from "react";
 import { getUserByUsername } from "../api";
 import { UserContext } from "./UserContext";
 import { useContext } from "react";
+import { AdultContext } from "./AdultContext";
+
 
 const Login = ({ navigation }) => {
   const { loggedUser, setLoggedUser } = useContext(UserContext);
   const [inputUsername, setInputUsername] = useState("");
   const [inputPassword, setInputPassword] = useState("");
-  // const [invalidUser,setInvalidUser] = useState(false)
-  // const [invalidPassword,setInvalidPassword] = useState(false)
+    const {over18,setOver18} = useContext(AdultContext)
 
   const handleOnPress = () => {
     getUserByUsername(inputUsername)
@@ -21,6 +22,7 @@ const Login = ({ navigation }) => {
         }
       })
       .then(() => {
+        setOver18(false)
         navigation.navigate("Home");
       })
       .catch((err) => {

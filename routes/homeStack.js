@@ -11,6 +11,7 @@ import FilteredCocktails from "../components/FilteredCocktails";
 import Accelerometer from "../components/Accelerometer";
 import FilterInput from "../components/FilterInput";
 import Login from "../components/Login";
+import SignUp from "../components/SignUp";
 
 
 const screens = {
@@ -51,6 +52,9 @@ const screens = {
   },
   "Login": {
     screen: Login,
+  },
+  "Sign up": {
+    screen: SignUp,
   }
 };
 
