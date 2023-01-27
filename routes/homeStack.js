@@ -9,6 +9,7 @@ import LandingScreen from "../components/LandingScreen";
 import NonAL from "../components/NonAL";
 import FilteredCocktails from "../components/FilteredCocktails";
 import Filter from "../components/Filter";
+import Accelerometer from "../components/Accelerometer";
 
 const screens = {
   Welcome: {

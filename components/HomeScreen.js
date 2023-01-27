@@ -1,6 +1,7 @@
 import { View, Text, Button, TextInput, StyleSheet } from "react-native";
 import Filter from "./Filter";
 import { useState } from "react";
+// import Accelerometer from "../components/Accelerometer";
 
 const HomeScreen = ({ navigation }) => {
   const adult = navigation.state.params;
@@ -25,6 +26,7 @@ const HomeScreen = ({ navigation }) => {
       {over18 === true ? (
         <Button title="Non-alcoholic drinks" onPress={choicePressHandler} />
       ) : null}
+    
 
       <Filter />
     </View>
