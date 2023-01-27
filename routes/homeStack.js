@@ -8,8 +8,10 @@ import Alphabet from "../components/Alphabet";
 import LandingScreen from "../components/LandingScreen";
 import NonAL from "../components/NonAL";
 import FilteredCocktails from "../components/FilteredCocktails";
+import Accelerometer from "../components/Accelerometer";
 import FilterInput from "../components/FilterInput";
 import Login from "../components/Login";
+
 
 const screens = {
   Welcome: {

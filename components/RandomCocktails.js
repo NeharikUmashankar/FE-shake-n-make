@@ -7,6 +7,9 @@ import {
 import { View, Text, Image } from "react-native";
 import RandomButton from "./RandomButton";
 import ImageViewer from "./ImageViewer";
+import Accelerometer from "../components/Accelerometer";
+import cocktailAccelerometer from "../components/Accelerometer";
+
 
 const RandomCocktails = ({ navigation }) => {
   const { over18 } = navigation.state.params;
@@ -14,6 +17,7 @@ const RandomCocktails = ({ navigation }) => {
   const [cocktailMeasures, setCocktailMeasures] = useState({});
   const [cocktailIngredients, setCocktailIngredients] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [refresh, setRefresh] = useState(false);
 
   useEffect(() => {
     getRandomCocktail(over18).then((info) => {
@@ -22,7 +26,8 @@ const RandomCocktails = ({ navigation }) => {
       setCocktailIngredients(getCocktailIngredients(cocktail));
       setLoading(false);
     });
-  }, []);
+  }, [refresh]);
+
 
   useEffect(() => {
     setLoading(true);
@@ -31,6 +36,7 @@ const RandomCocktails = ({ navigation }) => {
   }, [cocktail]);
 
   const randomCocktailPlaceholderImage = cocktail.strDrinkThumb;
+
 
   if (loading)
     return (
@@ -54,7 +60,10 @@ const RandomCocktails = ({ navigation }) => {
         })}
       </Text>
       <Text> Recipe: {cocktail.strInstructions}</Text>
-      <RandomButton />
+      <Accelerometer navigation={navigation} > 
+      </Accelerometer>
+      
+      {/* <RandomButton /> */}
     </View>
   );
 };
