@@ -40,7 +40,7 @@ const Cocktail = ({ navigation }) => {
     );
 
   return (
-    <ScrollView>
+    <ScrollView key = {cocktailName}>
       <Text>Info for {cocktailName}:</Text>
       <View>
         <ImageViewer
@@ -51,7 +51,7 @@ const Cocktail = ({ navigation }) => {
         Ingredients needed:
         {cocktailIngredients.map((ingredient, i) => {
           return (
-            <Text>
+            <Text key = {cocktailName}>
               {ingredient}: {cocktailMeasures[i]}{" "}
             </Text>
           );

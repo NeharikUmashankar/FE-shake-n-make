@@ -27,6 +27,7 @@ const NonAL = ({ navigation }) => {
       {nonAL.map((drink) => {
         return (
           <Button
+          key = {drink.strDrink}
             title={drink.strDrink}
             onPress={() => {
               navigation.navigate("Cocktail", {

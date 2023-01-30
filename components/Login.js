@@ -5,12 +5,11 @@ import { UserContext } from "./UserContext";
 import { useContext } from "react";
 import { AdultContext } from "./AdultContext";
 
-
 const Login = ({ navigation }) => {
   const { loggedUser, setLoggedUser } = useContext(UserContext);
   const [inputUsername, setInputUsername] = useState("");
   const [inputPassword, setInputPassword] = useState("");
-    const {over18,setOver18} = useContext(AdultContext)
+  const { over18, setOver18 } = useContext(AdultContext);
 
   const handleOnPress = () => {
     getUserByUsername(inputUsername)
@@ -19,11 +18,9 @@ const Login = ({ navigation }) => {
           alert("Your password is invalid. Please try again.");
         } else {
           setLoggedUser(user);
+          setOver18(false);
+          navigation.navigate("Home");
         }
-      })
-      .then(() => {
-        setOver18(false)
-        navigation.navigate("Home");
       })
       .catch((err) => {
         if (+err.message.slice(-4) === 404) {
@@ -31,31 +28,7 @@ const Login = ({ navigation }) => {
         }
       });
   };
-  // if (invalidUser) {
-  //     return (
-  //         <View>
-  //             <Text>Your username is invalid.  Click below to try again or to create an account.</Text>
-  //             <Button title="Re-try"
-  //                 onPress={() => {
-  //                     setInvalidUser(false)
-  //                 }}
-  //                 >
-  //             </Button>
-  //             <Button title="Sign up">
 
-  //             </Button>
-  //         </View>
-  //     )
-  // } else if (invalidPassword) {
-  //     return (
-  //         <View>
-  //             <Text>Your password is invalid.  Click below to try again.</Text>
-  //             <Button title="Re-try" onPress={() => {
-  //                 setInvalidPassword(false)
-  //             }}></Button>
-  //         </View>
-  //     )
-  // } else {
   return (
     <View>
       <Text>Please enter your username and password.</Text>

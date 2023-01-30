@@ -76,7 +76,7 @@ export const getNonAL = () => {
   });
 };
 
-export const getFilteredCocktails = (ingredient) => {
+export const getFilteredCocktails = (ingredient, adult = false) => {
   if (ingredient.length === 0) {
     return "No ingredients provided";
   }
@@ -90,13 +90,36 @@ export const getFilteredCocktails = (ingredient) => {
     if (item.endsWith(" ")) {
       item = item.slice(0, -1);
     }
-    item.replace(" ","_")
+    item.replace(" ", "_");
     url += `${item},`;
   }
-
-  return cocktailAPI.get(url.slice(0,-1)).then(({ data }) => {
-    return data.drinks;
-  });
+  if (adult) {
+    return cocktailAPI.get(url.slice(0, -1)).then(({ data }) => {
+      return data.drinks;
+    });
+  } else {
+    return cocktailAPI
+      .get(url.slice(0, -1))
+      .then(({ data }) => {
+        return data.drinks;
+      })
+      .then((drinks) => {
+        let promiseArray = [];
+        for (let drink of drinks) {
+          promiseArray.push(cocktailAPI.get(`/lookup.php?i=${drink.idDrink}`));
+        }
+        return Promise.all(promiseArray);
+      })
+      .then((promiseResults) => {
+        const finalResults = promiseResults.filter((element) => {
+          return element.data.drinks[0].strAlcoholic === "Non alcoholic";
+        });
+        const filteredResults = finalResults.map((element) => {
+          return element.data.drinks[0];
+        });
+        return filteredResults;
+      });
+  }
 };
 
 export const getUserByUsername = (username) => {
@@ -104,4 +127,3 @@ export const getUserByUsername = (username) => {
     return user;
   });
 };
-

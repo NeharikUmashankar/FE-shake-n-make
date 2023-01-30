@@ -1,15 +1,12 @@
-import { View, Text, Button, TextInput, StyleSheet } from "react-native";
+import { View, Text, Button } from "react-native";
 import FilterInput from "./FilterInput";
 import { useContext } from "react";
 import { AdultContext } from "./AdultContext";
 import { UserContext } from "./UserContext";
 
 const HomeScreen = ({ navigation }) => {
-
-  const {over18, setOver18} = useContext(AdultContext)
-  const { loggedUser, setLoggedUser } = useContext(UserContext)
-
-
+  const { over18, setOver18 } = useContext(AdultContext);
+  const { loggedUser, setLoggedUser } = useContext(UserContext);
 
   const randomPressHandler = () => {
     navigation.navigate("Random cocktail");
@@ -23,26 +20,18 @@ const HomeScreen = ({ navigation }) => {
   };
 
   return (
-    <View>
-      <Text>Feelin' thirsty? Select an option below:</Text>
-      <Button title="Get a random cocktail" onPress={randomPressHandler} />
+    <View className="bg-lightestBlue h-full">
+      <Text className="text-stone-900 m-2">
+        Feelin' thirsty? Select an option below:
+      </Text>
+      <Button title="Get a random cocktail" onPress={randomPressHandler} className = 'rounded-full' />
       <Button title="Get cocktails by letter" onPress={AZPressHandler} />
-      {over18 === true || loggedUser.over18 === true? (
+      {over18 === true || loggedUser.over18 === true ? (
         <Button title="Non-alcoholic drinks" onPress={choicePressHandler} />
-      ) : null} 
-      <FilterInput navigation= {navigation} />
-
+      ) : null}
+      <FilterInput navigation={navigation} />
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  input: {
-    height: 40,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
-  },
-});
 
 export default HomeScreen;
