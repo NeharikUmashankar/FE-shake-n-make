@@ -127,3 +127,10 @@ export const getUserByUsername = (username) => {
     return user;
   });
 };
+
+export const postUser = (userObject) => {
+  return databaseAPI.post('/users',userObject)
+  .then((res) => {
+    return "success"
+  })
+}
