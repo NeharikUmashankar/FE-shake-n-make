@@ -1,4 +1,4 @@
-import { View, Text, ScrollView, Button } from "react-native";
+import { View, Text, ScrollView, Pressable } from "react-native";
 import { getNonAL } from "../api";
 import { useState, useEffect } from "react";
 
@@ -22,20 +22,21 @@ const NonAL = ({ navigation }) => {
     );
 
   return (
-    <ScrollView>
-      <Text>Non alcoholic drinks coming soon....</Text>
+    <ScrollView className="bg-lightestBlue h-full">
       {nonAL.map((drink) => {
         return (
-          <Button
-          key = {drink.strDrink}
-            title={drink.strDrink}
+          <Pressable
+            className="bg-mainBlue p-3 w-1/2 self-center rounded-full my-3"
+            key={drink.strDrink}
             onPress={() => {
               navigation.navigate("Cocktail", {
                 cocktailName: drink.strDrink,
                 cocktailId: drink.idDrink,
               });
             }}
-          />
+          >
+            <Text className = 'text-white text-center'>{drink.strDrink}</Text>
+          </Pressable>
         );
       })}
     </ScrollView>

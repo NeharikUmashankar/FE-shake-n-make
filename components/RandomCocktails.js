@@ -47,20 +47,26 @@ const RandomCocktails = ({ navigation }) => {
 
   if (loading)
     return (
-      <View>
+      <View className="bg-sky-100/30">
         <Text>Loading ingredients, please wait...</Text>
       </View>
     );
 
   return (
-    <ScrollView>
-      <Text className = 'p-3 m-4 text-center border border-black'>Shake phone to refresh</Text>
-      <Text>Your randomly generated drink: {cocktail.strDrink}</Text>
-      <ImageViewer
-        placeholderImageSource={{ uri: randomCocktailPlaceholderImage }}
-      ></ImageViewer>
-      <Text>
-        Ingredients needed:
+    <ScrollView className="bg-lightestBlue">
+      <Text className="p-3 m-4 text-center border border-darkestBlue bg-sky-300/40">
+        Shake phone to refresh
+      </Text>
+      <Text className="text-center text-xl">{cocktail.strDrink}</Text>
+      <View className="self-center my-5 rounded-full">
+        <ImageViewer
+          placeholderImageSource={{ uri: randomCocktailPlaceholderImage }}
+        ></ImageViewer>
+      </View>
+      <Text className="mt-8 mb-2 w-2/6 text-center self-center text-xl">
+        Ingredients
+      </Text>
+      <View className="bg-sky-100/30 p-4  w-2/5 self-center">
         {cocktailIngredients.map((ingredient, i) => {
           return (
             <Text key={ingredient}>
@@ -68,8 +74,14 @@ const RandomCocktails = ({ navigation }) => {
             </Text>
           );
         })}
+      </View>
+
+      <Text className="mt-8 mb-2 w-1/6 text-center self-center text-xl">
+        Recipe
       </Text>
-      <Text> Recipe: {cocktail.strInstructions}</Text>
+      <Text className="bg-sky-100/30 mx-6 mb-6 p-4 text-center">
+        {cocktail.strInstructions}
+      </Text>
       <Accelerometer navigation={navigation}></Accelerometer>
 
       {/* <RandomButton /> */}

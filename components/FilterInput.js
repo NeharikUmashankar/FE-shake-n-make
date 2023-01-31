@@ -1,4 +1,4 @@
-import { View, StyleSheet, TextInput, Text, Button } from "react-native";
+import { View, StyleSheet, TextInput, Text, Pressable } from "react-native";
 import { useEffect, useState } from "react";
 import { useContext } from "react";
 import { AdultContext } from "./AdultContext";
@@ -31,9 +31,12 @@ const FilterInput = ({ navigation }) => {
   }, [sumbittedText]);
 
   return (
-    <View>
-      <Text>Filter by Ingredient. Please list ingredients separated by a comma.</Text>
+    <View className="bg-sky-200/25 m-5 p-4 rounded-3xl">
+      <Text className = 'text-center'>
+        Filter by Ingredient. Please list ingredients separated by a comma.
+      </Text>
       <TextInput
+      className = 'bg-sky-100/20 rounded-l'
         style={styles.input}
         onChangeText={(inputText) => {
           setText(inputText);
@@ -41,7 +44,9 @@ const FilterInput = ({ navigation }) => {
         value={text}
         placeholder={adult ? "Gin, Vodka, Orange" : "Coffee, sugar"}
       ></TextInput>
-      <Button title="Submit" onPress={handlePress}></Button>
+      <Pressable className="bg-mainBlue m-2 p-3 w-2/5 self-center rounded-full" title="Submit" onPress={handlePress}>
+        <Text className = 'text-white text-center'>Filter</Text>
+      </Pressable>
     </View>
   );
 };
