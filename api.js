@@ -167,3 +167,11 @@ export const getFavouritesByUserId = (userId) => {
     return cocktails
   })
 }
+
+
+export const deleteCocktailById = (cocktail_id) => {
+  return databaseAPI.delete(`/cocktails/${cocktail_id}`)
+  .then(() => {
+    return "success"
+  })
+}
