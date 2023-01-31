@@ -21,6 +21,7 @@ const Login = ({ navigation }) => {
         if (user.password !== inputPassword) {
           alert("Your password is invalid. Please try again.");
         } else {
+          alert(`You successfully logged in as ${user.username}`)
           setFirstVisit(false)
           setLoggedUser(user);
           setOver18(false);
@@ -28,6 +29,7 @@ const Login = ({ navigation }) => {
         }
       })
       .catch((err) => {
+        console.log(err)
         if (+err.message.slice(-4) === 404) {
           alert("Your username is invalid. Please try again.");
         }
@@ -51,7 +53,7 @@ const Login = ({ navigation }) => {
       <Button title="Submit" onPress={handleOnPress}></Button>
       <View>
         <Text>Not got an account? Click below to sign up.</Text>
-        <Button title="Sign up"></Button>
+        <Button title="Sign up" onPress={() => navigation.navigate("Sign up")}></Button>
       </View>
     </View>
   );
