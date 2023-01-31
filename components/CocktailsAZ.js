@@ -1,6 +1,6 @@
 import { getCocktailsByLetter } from "../api";
 import { useState, useEffect } from "react";
-import { View, Text, Button, ScrollView } from "react-native";
+import { View, Text, Pressable, ScrollView } from "react-native";
 import { useContext } from "react";
 import { AdultContext } from "./AdultContext";
 import { UserContext } from "./UserContext";
@@ -46,12 +46,12 @@ const CocktailsAZ = ({ navigation }) => {
     );
 
   return (
-    <ScrollView>
-      <Text>Cocktails by A to Z coming soon....</Text>
+    <ScrollView className="bg-lightestBlue h-full">
       {cocktails.map((cocktail) => {
         return (
-          <Button
-            key={cocktail.name}
+          <Pressable
+            className="bg-mainBlue p-3 w-1/2 self-center rounded-full my-3"
+            key={cocktail.drinkId}
             title={cocktail.name}
             onPress={() => {
               navigation.navigate("Cocktail", {
@@ -59,7 +59,9 @@ const CocktailsAZ = ({ navigation }) => {
                 cocktailId: cocktail.id,
               });
             }}
-          />
+          >
+            <Text className="text-center text-white">{cocktail.name}</Text>
+          </Pressable>
         );
       })}
     </ScrollView>

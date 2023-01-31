@@ -57,29 +57,29 @@ const RandomCocktails = ({ navigation }) => {
       <Text className="p-3 m-4 text-center border border-darkestBlue bg-sky-300/40">
         Shake phone to refresh
       </Text>
-      <Text className="text-center text-xl">{cocktail.strDrink}</Text>
+      <Text className="text-center text-xl bg-sky-100/30 w-3/5 self-center my-4 p-2 rounded-md border border-black">{cocktail.strDrink}</Text>
       <View className="self-center my-5 rounded-full">
         <ImageViewer
           placeholderImageSource={{ uri: randomCocktailPlaceholderImage }}
         ></ImageViewer>
       </View>
-      <Text className="mt-8 mb-2 w-2/6 text-center self-center text-xl">
+      <Text className="bg-sky-100/30 mt-8 w-2/6 p-2 text-center self-center text-xl">
         Ingredients
       </Text>
-      <View className="bg-sky-100/30 p-4  w-2/5 self-center">
+      <View className="bg-sky-100/30 p-4  w-3/5 self-center">
         {cocktailIngredients.map((ingredient, i) => {
           return (
-            <Text key={ingredient}>
+            <Text className = 'text-center' key={ingredient}>
               {ingredient}: {cocktailMeasures[i]}{" "}
             </Text>
           );
         })}
       </View>
 
-      <Text className="mt-8 mb-2 w-1/6 text-center self-center text-xl">
+      <Text className="bg-sky-100/30 mt-8 w-2/6 p-2 text-center self-center text-xl">
         Recipe
       </Text>
-      <Text className="bg-sky-100/30 mx-6 mb-6 p-4 text-center">
+      <Text className="bg-sky-100/30 mx-6 mb-6 p-4 w-4/5 text-center self-center">
         {cocktail.strInstructions}
       </Text>
       <Accelerometer navigation={navigation}></Accelerometer>

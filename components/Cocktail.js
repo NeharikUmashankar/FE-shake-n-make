@@ -40,25 +40,36 @@ const Cocktail = ({ navigation }) => {
     );
 
   return (
-    <ScrollView key = {cocktailName}>
-      <Text>Info for {cocktailName}:</Text>
-      <View>
+    <ScrollView className="bg-lightestBlue" key={cocktailName}>
+      <Text className="text-center text-xl bg-sky-100/30 w-3/5 self-center my-4 p-2 rounded-md border border-black">
+        {" "}
+        {cocktailName}
+      </Text>
+      <View className = 'self-center'>
         <ImageViewer
           placeholderImageSource={{ uri: placeholderImage }}
         ></ImageViewer>
       </View>
-      <Text key={cocktailName}>
-        Ingredients needed:
+      <Text className="bg-sky-100/30 mt-8 w-2/6 p-2 text-center self-center text-xl">
+        Ingredients
+      </Text>
+      <View className="bg-sky-100/30 p-4  w-3/5 self-center" key={cocktailName}>
         {cocktailIngredients.map((ingredient, i) => {
           return (
-            <Text key = {cocktailName}>
+            <Text className="text-center" key={cocktailName}>
               {ingredient}: {cocktailMeasures[i]}{" "}
             </Text>
           );
         })}
+      </View>
+      <Text className=" bg-sky-100/30 mt-8 w-2/6 text-center self-center text-xl p-2">
+        Recipe
       </Text>
 
-      <Text> Recipe: {cocktail.strInstructions}</Text>
+      <Text className="bg-sky-100/30 mx-6 mb-6 p-4 text-center self-center w-3/5">
+        {" "}
+        {cocktail.strInstructions}
+      </Text>
     </ScrollView>
   );
 };

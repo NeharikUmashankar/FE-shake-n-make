@@ -1,4 +1,4 @@
-import { View, StyleSheet, TextInput, Text, Pressable } from "react-native";
+import { View, StyleSheet, TextInput, Text, Pressable, } from "react-native";
 import { useEffect, useState } from "react";
 import { useContext } from "react";
 import { AdultContext } from "./AdultContext";
@@ -8,6 +8,8 @@ const FilterInput = ({ navigation }) => {
   const [text, setText] = useState("");
   const [sumbittedText, setSubmittedText] = useState("");
   const [firstLoad, setFirstLoad] = useState(true);
+
+  //gin, dry vermouth, anis
 
   const { over18 } = useContext(AdultContext);
   const { loggedUser } = useContext(UserContext);
