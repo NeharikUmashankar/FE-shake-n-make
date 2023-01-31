@@ -6,6 +6,7 @@ import { getFavouriteIngredients } from "../api";
 import { getFavouriteMeasures } from "../api";
 import { Text,View } from "react-native";
 import ImageViewer from "./ImageViewer";
+import DeleteButton from "./DeleteButton";
 
 
 const ViewFavourites = () => {
@@ -24,6 +25,7 @@ const ViewFavourites = () => {
                         <ScrollView>
                             <View>
                                 <Text>{cocktail.title}</Text>
+                                <DeleteButton cocktail={cocktail} />
                             </View>
                             <ImageViewer
                                 placeholderImageSource={{ uri: cocktail.thumbnail }}

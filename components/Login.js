@@ -20,7 +20,7 @@ const Login = ({ navigation }) => {
     getUserByUsername(inputUsername)
       .then((user) => {
         if (user.password !== inputPassword) {
-          alert("Your password is invalid. Please try again.");
+            return Promise.reject({msg: "Your password is invalid. Please try again."});
         } else {
           alert(`You successfully logged in as ${user.username}`)
           setFirstVisit(false)
@@ -36,9 +36,12 @@ const Login = ({ navigation }) => {
         navigation.navigate("Home");
       })
       .catch((err) => {
-        console.log(err)
+        if (err.msg !== undefined) {
+        alert(err.msg)
+        } else {
         if (+err.message.slice(-4) === 404) {
           alert("Your username is invalid. Please try again.");
+        }
         }
       });
   };
