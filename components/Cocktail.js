@@ -7,6 +7,7 @@ import {
 import { View, Text, ScrollView, StyleSheet } from "react-native";
 import { Image } from "react-native";
 import ImageViewer from "./ImageViewer";
+import FavouriteButton from "./FavouriteButton";
 
 const Cocktail = ({ route,navigation }) => {
 
@@ -16,7 +17,7 @@ const Cocktail = ({ route,navigation }) => {
   const [cocktail, setCocktail] = useState({});
   const [cocktailMeasures, setCocktailMeasures] = useState({});
   const [cocktailIngredients, setCocktailIngredients] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setCocktailIngredients(getCocktailIngredients(cocktail));
@@ -25,11 +26,13 @@ const Cocktail = ({ route,navigation }) => {
 
   useEffect(() => {
     getCocktailById({ cocktailId }).then((info) => {
-      setCocktail(info);
+      return setCocktail(info);
+    })
+    .then(() => {
       getCocktailIngredients(cocktail);
       setCocktailIngredients(getCocktailIngredients(cocktail));
       setLoading(false);
-    });
+    })
   }, []);
 
   const placeholderImage = cocktail.strDrinkThumb;
@@ -43,7 +46,11 @@ const Cocktail = ({ route,navigation }) => {
 
   return (
     <ScrollView key = {cocktailName}>
-      <Text>Info for {cocktailName}:</Text>
+      <View >
+        <Text>Info for {cocktailName}:</Text>
+        <FavouriteButton cocktail={cocktail} />
+      </View>
+
       <View>
         <ImageViewer
           placeholderImageSource={{ uri: placeholderImage }}
@@ -64,5 +71,7 @@ const Cocktail = ({ route,navigation }) => {
     </ScrollView>
   );
 };
+
+
 
 export default Cocktail;
