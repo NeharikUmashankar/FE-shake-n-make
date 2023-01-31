@@ -9,6 +9,8 @@ import { Image } from "react-native";
 import ImageViewer from "./ImageViewer";
 
 const Cocktail = ({ route,navigation }) => {
+
+
   const { cocktailName, cocktailId } = route.params;
 
   const [cocktail, setCocktail] = useState({});
