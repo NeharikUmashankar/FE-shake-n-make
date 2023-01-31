@@ -1,4 +1,4 @@
-import { View, Text, Button } from "react-native";
+import { View, Text, Button, Pressable } from "react-native";
 import FilterInput from "./FilterInput";
 import { useContext } from "react";
 import { AdultContext } from "./AdultContext";
@@ -24,7 +24,11 @@ const HomeScreen = ({ navigation }) => {
       <Text className="text-stone-900 m-2">
         Feelin' thirsty? Select an option below:
       </Text>
-      <Button title="Get a random cocktail" onPress={randomPressHandler} className = 'rounded-full' />
+      <Button
+        className="bg-black"
+        title="Get a random cocktail"
+        onPress={randomPressHandler}
+      />
       <Button title="Get cocktails by letter" onPress={AZPressHandler} />
       {over18 === true || loggedUser.over18 === true ? (
         <Button title="Non-alcoholic drinks" onPress={choicePressHandler} />
