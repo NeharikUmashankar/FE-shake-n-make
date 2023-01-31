@@ -4,12 +4,16 @@ import { getUserByUsername } from "../api";
 import { UserContext } from "./UserContext";
 import { useContext } from "react";
 import { AdultContext } from "./AdultContext";
+import { FirstVisitContext } from "./FirstVisitContext";
+
 
 const Login = ({ navigation }) => {
   const { loggedUser, setLoggedUser } = useContext(UserContext);
   const [inputUsername, setInputUsername] = useState("");
   const [inputPassword, setInputPassword] = useState("");
   const { over18, setOver18 } = useContext(AdultContext);
+  const {firstVisit,setFirstVisit} = useContext(FirstVisitContext)
+
 
   const handleOnPress = () => {
     getUserByUsername(inputUsername)
@@ -17,6 +21,7 @@ const Login = ({ navigation }) => {
         if (user.password !== inputPassword) {
           alert("Your password is invalid. Please try again.");
         } else {
+          setFirstVisit(false)
           setLoggedUser(user);
           setOver18(false);
           navigation.navigate("Home");

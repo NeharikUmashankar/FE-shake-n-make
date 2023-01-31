@@ -5,8 +5,8 @@ import { useContext } from "react";
 import { AdultContext } from "./AdultContext";
 import { UserContext } from "./UserContext";
 
-const FilteredCocktails = ({ navigation }) => {
-  const { ingredients } = navigation.state.params;
+const FilteredCocktails = ({ route,navigation }) => {
+  const { ingredients } = route.params;
   const [filteredCocktailList, setFilteredCocktailList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 

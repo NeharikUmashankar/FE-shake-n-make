@@ -1,11 +1,13 @@
 import { View, Text, Button } from "react-native";
 import React from "react";
-import { useContext } from "react";
+import { useContext,useEffect } from "react";
 import { AdultContext } from "./AdultContext";
+import { FirstVisitContext } from "./FirstVisitContext";
 
 const LandingScreen = ({ navigation }) => {
+  const {firstVisit,setFirstVisit} = useContext(FirstVisitContext)
   const { over18, setOver18 } = useContext(AdultContext);
-
+  
   return (
     <View className="bg-lightestBlue h-full">
       <View className="p-3 my-5 w-3/5 self-center">
@@ -15,6 +17,8 @@ const LandingScreen = ({ navigation }) => {
         <Button
           title="Yes"
           onPress={() => {
+            setFirstVisit(false)
+
             setOver18(true);
             navigation.navigate("Home");
           }}
@@ -22,6 +26,8 @@ const LandingScreen = ({ navigation }) => {
         <Button
           title="No"
           onPress={() => {
+            setFirstVisit(false)
+
             setOver18(false);
             navigation.navigate("Home");
           }}
