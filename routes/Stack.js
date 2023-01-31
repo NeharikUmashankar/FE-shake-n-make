@@ -12,6 +12,7 @@ import Accelerometer from "../components/Accelerometer";
 import FilterInput from "../components/FilterInput";
 import Login from "../components/Login";
 import SignUp from "../components/SignUp";
+import ViewFavourites from "../components/ViewFavourites";
 
 const Stack = createNativeStackNavigator();
 // export default createAppContainer(HomeStack);
@@ -36,6 +37,7 @@ export default MyStack = ({name}) => {
             <Stack.Screen name="Filtered Cocktails" component={FilteredCocktails}/>
             <Stack.Screen name="Login" component={Login}/>
             <Stack.Screen name="Sign up" component={SignUp}/>
+            <Stack.Screen name="Favourites" component={ViewFavourites}/>
             
         
         </Stack.Navigator>

@@ -5,15 +5,16 @@ import { UserContext } from "./UserContext";
 import { useContext } from "react";
 import { AdultContext } from "./AdultContext";
 import { FirstVisitContext } from "./FirstVisitContext";
-
+import { getFavouritesByUserId } from "../api";
+import { FavouritesContext } from "./FavouritesContext";
 
 const Login = ({ navigation }) => {
   const { loggedUser, setLoggedUser } = useContext(UserContext);
   const [inputUsername, setInputUsername] = useState("");
   const [inputPassword, setInputPassword] = useState("");
   const { over18, setOver18 } = useContext(AdultContext);
-  const {firstVisit,setFirstVisit} = useContext(FirstVisitContext)
-
+  const { firstVisit, setFirstVisit } = useContext(FirstVisitContext)
+  const { favouritesList, setFavouritesList } = useContext(FavouritesContext)
 
   const handleOnPress = () => {
     getUserByUsername(inputUsername)
@@ -25,8 +26,14 @@ const Login = ({ navigation }) => {
           setFirstVisit(false)
           setLoggedUser(user);
           setOver18(false);
-          navigation.navigate("Home");
+          return getFavouritesByUserId(user.user_id)
         }
+      })
+      .then((cocktails) => {
+        return setFavouritesList(cocktails)
+      })
+      .then(() => {
+        navigation.navigate("Home");
       })
       .catch((err) => {
         console.log(err)

@@ -11,6 +11,7 @@ import cocktailAccelerometer from "../components/Accelerometer";
 import { useContext } from "react";
 import { AdultContext } from "./AdultContext";
 import { UserContext } from "./UserContext";
+import FavouriteButton from "./FavouriteButton";
 
 const RandomCocktails = ({ navigation }) => {
   const [cocktail, setCocktail] = useState({});
@@ -54,8 +55,11 @@ const RandomCocktails = ({ navigation }) => {
 
   return (
     <ScrollView>
-      <Text className = 'p-3 m-4 text-center border border-black'>Shake phone to refresh</Text>
-      <Text>Your randomly generated drink: {cocktail.strDrink}</Text>
+      <Text className='p-3 m-4 text-center border border-black'>Shake phone to refresh</Text>
+      <View>
+        <Text>Your randomly generated drink: {cocktail.strDrink}</Text>
+        <FavouriteButton cocktail={cocktail} />
+      </View>
       <ImageViewer
         placeholderImageSource={{ uri: randomCocktailPlaceholderImage }}
       ></ImageViewer>

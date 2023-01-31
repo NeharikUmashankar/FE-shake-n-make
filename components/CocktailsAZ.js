@@ -47,7 +47,7 @@ const CocktailsAZ = ({ route,navigation }) => {
 
   return (
     <ScrollView>
-      <Text>Cocktails by A to Z coming soon....</Text>
+      <Text>Please select a letter to view cocktails with a title starting with that letter.</Text>
       {cocktails.map((cocktail) => {
         return (
           <Button

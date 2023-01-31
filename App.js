@@ -3,6 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { useState } from "react";
 import { UserContext } from "./components/UserContext";
 import { AdultContext } from "./components/AdultContext";
+import { FavouritesContext } from "./components/FavouritesContext";
 import { FirstVisitContext } from './components/FirstVisitContext'
 import TabNavigator from "./routes/Tab";
 
@@ -14,8 +15,10 @@ export default function App() {
   const [cocktailName, setCocktailName] = useState("");
   const [cocktailId, setCocktailId] = useState("");
   const [firstVisit, setFirstVisit] = useState(true)
+  const [favouritesList, setFavouritesList] = useState([])
 
   return (
+      <FavouritesContext.Provider value={{favouritesList,setFavouritesList}}>
     <FirstVisitContext.Provider value={{firstVisit,setFirstVisit}}>
       <AdultContext.Provider value={{ over18, setOver18 }}>
         <UserContext.Provider value={{ loggedUser, setLoggedUser }}>
@@ -27,5 +30,6 @@ export default function App() {
         </UserContext.Provider>
       </AdultContext.Provider>
     </FirstVisitContext.Provider>
+    </FavouritesContext.Provider>
   );
 }
