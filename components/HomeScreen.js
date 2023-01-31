@@ -5,8 +5,8 @@ import { AdultContext } from "./AdultContext";
 import { UserContext } from "./UserContext";
 
 const HomeScreen = ({ navigation }) => {
-  const { over18, setOver18 } = useContext(AdultContext);
-  const { loggedUser, setLoggedUser } = useContext(UserContext);
+  const { over18 } = useContext(AdultContext);
+  const { loggedUser } = useContext(UserContext);
 
   const randomPressHandler = () => {
     navigation.navigate("Random cocktail");

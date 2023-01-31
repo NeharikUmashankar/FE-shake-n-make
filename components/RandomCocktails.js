@@ -83,8 +83,6 @@ const RandomCocktails = ({ navigation }) => {
         {cocktail.strInstructions}
       </Text>
       <Accelerometer navigation={navigation}></Accelerometer>
-
-      {/* <RandomButton /> */}
     </ScrollView>
   );
 };

@@ -6,10 +6,10 @@ import { useContext } from "react";
 import { AdultContext } from "./AdultContext";
 
 const Login = ({ navigation }) => {
-  const { loggedUser, setLoggedUser } = useContext(UserContext);
+  const { setLoggedUser } = useContext(UserContext);
   const [inputUsername, setInputUsername] = useState("");
   const [inputPassword, setInputPassword] = useState("");
-  const { over18, setOver18 } = useContext(AdultContext);
+  const { setOver18 } = useContext(AdultContext);
 
   const handleOnPress = () => {
     getUserByUsername(inputUsername)

@@ -4,7 +4,7 @@ import {
   getCocktailById,
   getCocktailMeasures,
 } from "../api";
-import { View, Text, ScrollView, StyleSheet } from "react-native";
+import { View, Text, ScrollView } from "react-native";
 import { Image } from "react-native";
 import ImageViewer from "./ImageViewer";
 

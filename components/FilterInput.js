@@ -9,7 +9,7 @@ const FilterInput = ({ navigation }) => {
   const [sumbittedText, setSubmittedText] = useState("");
   const [firstLoad, setFirstLoad] = useState(true);
 
-  //gin, dry vermouth, anis
+ 
 
   const { over18 } = useContext(AdultContext);
   const { loggedUser } = useContext(UserContext);

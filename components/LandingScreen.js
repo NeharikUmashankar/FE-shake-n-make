@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { AdultContext } from "./AdultContext";
 
 const LandingScreen = ({ navigation }) => {
-  const { over18, setOver18 } = useContext(AdultContext);
+  const { setOver18 } = useContext(AdultContext);
 
   return (
     <View className="bg-lightestBlue h-full">

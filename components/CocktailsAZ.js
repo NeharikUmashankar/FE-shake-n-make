@@ -7,7 +7,6 @@ import { UserContext } from "./UserContext";
 
 const CocktailsAZ = ({ navigation }) => {
   const { letter } = navigation.state.params;
-
   const { over18 } = useContext(AdultContext);
   const { loggedUser } = useContext(UserContext);
 

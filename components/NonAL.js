@@ -13,6 +13,7 @@ const NonAL = ({ navigation }) => {
       setLoading(false);
     });
   }, []);
+  
 
   if (loading)
     return (

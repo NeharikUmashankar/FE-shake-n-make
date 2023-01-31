@@ -216,4 +216,5 @@ const Alphabet = ({ navigation }) => {
   );
 };
 
+
 export default Alphabet;

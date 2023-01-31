@@ -46,7 +46,7 @@ const FilteredCocktails = ({ navigation }) => {
     );
 
   return (
-    <ScrollView className = 'bg-lightestBlue'>
+    <ScrollView className = 'bg-lightestBlue '>
       {filteredCocktailList.map((cocktail) => {
         return (
           <Pressable
