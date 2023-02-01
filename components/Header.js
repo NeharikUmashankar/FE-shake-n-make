@@ -19,6 +19,7 @@ const Header = ({title}) => {
     const handleHomeOnPress = () => {
         navigation.navigate("Home")
     }
+    
 
     return (
         <View className="w-full">
@@ -34,7 +35,7 @@ const Header = ({title}) => {
 
             </Pressable>
             <Text className = 'text-xl w-2/5 text-center'>{title}</Text>
-            <Pressable onPress={typeof loggedUser !== "object" ? handleGuestOnPress : handleUserOnPress }>
+            <Pressable onPress={handleOnPress}>
 
             <ImageViewer
             placeholderImageSource={typeof loggedUser!=="object" ? {uri: "https://images.macrumors.com/t/n4CqVR2eujJL-GkUPhv1oao_PmI=/1600x/article-new/2019/04/guest-user-250x250.jpg"}:(loggedUser.avatar ? {uri: loggedUser.avatar} : {uri: "https://www.pngitem.com/pimgs/m/272-2720607_this-icon-for-gender-neutral-user-circle-hd.png"})} logo={true}
