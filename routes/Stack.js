@@ -14,67 +14,126 @@ import Login from "../components/Login";
 import SignUp from "../components/SignUp";
 import ViewFavourites from "../components/ViewFavourites";
 import Header from "../components/Header";
+
 import Profile from "../components/Profile";
 import Edit from "../components/Edit";
+
+import { white } from "tailwindcss/colors";
 const Stack = createNativeStackNavigator();
 // export default createAppContainer(HomeStack);
-export default MyStack = ({ name, navigation}) => {
-    // console.log(name,"<<insideStack")
-    return (
-        <Stack.Navigator initialRouteName={name}>
-            <Stack.Screen name="Welcome" component={LandingScreen}
-                options={{ headerBackVisible: false,headerTitle: (props) => <Header title="Welcome"/> }}
-            />
-            <Stack.Screen name="Home" component={HomeScreen}
-                options={{ headerBackVisible: false,headerTitle: (props) => <Header title="Home"/> }}
-            />
-            <Stack.Screen name="Virgin?" component={NonAL}
-                options={{ headerBackVisible: false,headerTitle: (props) => <Header title="Non-alcoholic cocktails"/> }}
-            />
-            <Stack.Screen name="Random cocktail" component={RandomCocktails}
-                options={{ headerBackVisible: false,headerTitle: (props) => <Header title="Random cocktail"/> }}
-            />
-            <Stack.Screen name="Alphabet List"
-                options={{ headerBackVisible: false,headerTitle: (props) => <Header title="Alphabet List"/> }}
-            >
-                {(props) => <Alphabet {...props} />}
-            </Stack.Screen>
-            <Stack.Screen name="Cocktails by Alphabet"
-                options={{ headerBackVisible: false,headerTitle: (props) => <Header title="Cocktails by Letter"/> }}
-            >
-                {(props) => <CocktailsAZ {...props} />}
-            </Stack.Screen>
-            <Stack.Screen name="Cocktail"
-                options={{ headerBackVisible: false,headerTitle: (props) => <Header title="Cocktail"/> }}
-            >
-                {(props) => <Cocktail {...props} />}
-            </Stack.Screen>
-            <Stack.Screen name="Filter Input" component={FilterInput}
-                options={{ headerBackVisible: false,headerTitle: (props) => <Header /> }}
-            />
-            <Stack.Screen name="Filtered Cocktails" component={FilteredCocktails}
-                options={{ headerBackVisible: false,headerTitle: (props) => <Header title="Filtered cocktails"/> }}
-            />
-            <Stack.Screen name="Login" component={Login}
-                options={{ headerBackVisible: false,headerTitle: (props) => <Header title="Login"/> }}
-            />
-            <Stack.Screen name="Sign up" component={SignUp}
-                options={{ headerBackVisible: false,headerTitle: (props) => <Header title="Sign up"/> }}
-            />
-            <Stack.Screen name="Favourites" component={ViewFavourites}
+export default MyStack = ({ name, navigation }) => {
+  // console.log(name,"<<insideStack")
+  return (
+    <Stack.Navigator initialRouteName={name}>
+      <Stack.Screen
+        name="Welcome"
+        component={LandingScreen}
+        options={{
+          headerBackVisible: false,
+          headerTitle: (props) => <Header className="" title="Welcome" />,
+        }}
+      />
+      <Stack.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{
+          headerBackVisible: false,
+          headerTitle: (props) => <Header title="Home" />,
+        }}
+      />
+      <Stack.Screen
+        name="Virgin?"
+        component={NonAL}
+        options={{
+          headerBackVisible: false,
+          headerTitle: (props) => <Header title="Non-alcoholic cocktails" />,
+        }}
+      />
+      <Stack.Screen
+        name="Random cocktail"
+        component={RandomCocktails}
+        options={{
+          headerBackVisible: false,
+          headerTitle: (props) => <Header title="Random cocktail" />,
+        }}
+      />
+      <Stack.Screen
+        name="Alphabet List"
+        options={{
+          headerBackVisible: false,
+          headerTitle: (props) => <Header title="Alphabet List" />,
+        }}
+      >
+        {(props) => <Alphabet {...props} />}
+      </Stack.Screen>
+      <Stack.Screen
+        name="Cocktails by Alphabet"
+        options={{
+          headerBackVisible: false,
+          headerTitle: (props) => <Header title="Cocktails by Letter" />,
+        }}
+      >
+        {(props) => <CocktailsAZ {...props} />}
+      </Stack.Screen>
+      <Stack.Screen
+        name="Cocktail"
+        options={{
+          headerBackVisible: false,
+          headerTitle: (props) => <Header title="Cocktail" />,
+        }}
+      >
+        {(props) => <Cocktail {...props} />}
+      </Stack.Screen>
+      <Stack.Screen
+        name="Filter Input"
+        component={FilterInput}
+        options={{
+          headerBackVisible: false,
+          headerTitle: (props) => <Header />,
+        }}
+      />
+      <Stack.Screen
+        name="Filtered Cocktails"
+        component={FilteredCocktails}
+        options={{
+          headerBackVisible: false,
+          headerTitle: (props) => <Header title="Filtered cocktails" />,
+        }}
+      />
+      <Stack.Screen
+        name="Login"
+        component={Login}
+        options={{
+          headerBackVisible: false,
+          headerTitle: (props) => <Header title="Login" />,
+        }}
+      />
+      <Stack.Screen
+        name="Sign up"
+        component={SignUp}
+        options={{
+          headerBackVisible: false,
+          headerTitle: (props) => <Header title="Sign up" />,
+        }}
+      />
+      <Stack.Screen
+        name="Favourites"
+        component={ViewFavourites}
+        options={{
+          headerBackVisible: false,
+          headerTitle: (props) => <Header title="My favourites" />,
+        }}
+      />
+      <Stack.Screen name="Profile" component={Profile}
                 options={{ headerBackVisible: false,headerTitle: (props) => <Header title="My favourites" /> }}
-            />
-            <Stack.Screen name="Profile" component={Profile}
+      />
+      <Stack.Screen name="Edit" component={Edit}
                 options={{ headerBackVisible: false,headerTitle: (props) => <Header title="My favourites" /> }}
-            />
-            <Stack.Screen name="Edit" component={Edit}
-                options={{ headerBackVisible: false,headerTitle: (props) => <Header title="My favourites" /> }}
-            />
+      />
+    </Stack.Navigator>
+  );
+};
 
-
-        </Stack.Navigator>
-    )
-}
 
 // const screens = {
 //   Welcome: {
@@ -119,5 +178,3 @@ export default MyStack = ({ name, navigation}) => {
 //     screen: SignUp,
 //   }
 // };
-
-

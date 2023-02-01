@@ -48,35 +48,43 @@ const RandomCocktails = ({ navigation }) => {
 
   if (loading)
     return (
-      <View>
+      <View className="bg-sky-100/30">
         <Text>Loading ingredients, please wait...</Text>
       </View>
     );
 
   return (
-    <ScrollView>
-      <Text className='p-3 m-4 text-center border border-black'>Shake phone to refresh</Text>
-      <View>
-        <Text>Your randomly generated drink: {cocktail.strDrink}</Text>
-        <FavouriteButton cocktail={cocktail} />
+    <ScrollView className="bg-lightestBlue">
+      <Text className="p-3 m-4 text-center border border-darkestBlue bg-sky-300/40">
+        Shake phone to refresh
+      </Text>
+      <Text className="text-center text-xl bg-sky-100/30 w-3/5 self-center my-4 p-2 rounded-md border border-black">{cocktail.strDrink}</Text>
+      <FavouriteButton cocktail={cocktail} />
+      <View className="self-center my-5 rounded-full">
+        <ImageViewer
+          placeholderImageSource={{ uri: randomCocktailPlaceholderImage }}
+        ></ImageViewer>
       </View>
-      <ImageViewer
-        placeholderImageSource={{ uri: randomCocktailPlaceholderImage }}
-      ></ImageViewer>
-      <Text>
-        Ingredients needed:
+      <Text className="bg-sky-100/30 mt-8 w-2/6 p-2 text-center self-center text-xl">
+        Ingredients
+      </Text>
+      <View className="bg-sky-100/30 p-4  w-3/5 self-center">
         {cocktailIngredients.map((ingredient, i) => {
           return (
-            <Text key={ingredient}>
+            <Text className = 'text-center' key={ingredient}>
               {ingredient}: {cocktailMeasures[i]}{" "}
             </Text>
           );
         })}
-      </Text>
-      <Text> Recipe: {cocktail.strInstructions}</Text>
-      <Accelerometer navigation={navigation}></Accelerometer>
+      </View>
 
-      {/* <RandomButton /> */}
+      <Text className="bg-sky-100/30 mt-8 w-2/6 p-2 text-center self-center text-xl">
+        Recipe
+      </Text>
+      <Text className="bg-sky-100/30 mx-6 mb-6 p-4 w-4/5 text-center self-center">
+        {cocktail.strInstructions}
+      </Text>
+      <Accelerometer navigation={navigation}></Accelerometer>
     </ScrollView>
   );
 };

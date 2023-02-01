@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+
+const colors = require("tailwindcss/colors");
+
 module.exports = {
   content: ["./App.{js,jsx,ts,tsx}", "./components/**/*.{js,jsx,ts,tsx}"],
   theme: {
@@ -9,6 +12,9 @@ module.exports = {
       lightBlue: "#34619E",
       darkBlue: "#0E3975",
       darkestBlue: "#062A5A",
+      white: "#f8fafc",
+      buttonText: "#eff6ff",
+      sky: colors.sky,
     },
   },
   plugins: [],

@@ -32,9 +32,9 @@ const DeleteButton = ({ cocktail }) => {
 
 
     if (alerted) {return (
-        <View style={styles.container}>
+        <View className = 'bg-sky-100/80 w-10 p-2 self-center my-2 rounded-full'>
             <Pressable onPress={handleDelete}>
-                <Text>
+                <Text className = 'text-center'>
                     ❗
                 </Text>
             </Pressable>
@@ -42,9 +42,9 @@ const DeleteButton = ({ cocktail }) => {
     )
     } else {
         return (
-            <View style={styles.container}>
+            <View className = 'bg-sky-100/80 w-10 p-2 self-center my-2 rounded-full'>
             <Pressable onPress={handleOnPress}>
-                <Text>
+                <Text className = 'text-center'>
                     🗑️
                 </Text>
             </Pressable>

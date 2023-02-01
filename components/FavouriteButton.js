@@ -47,7 +47,7 @@ const FavouriteButton = ({cocktail}) => {
     } else if (exists === true) {
         return (
             <View>
-                <Text>
+                <Text className = 'text-xl text-center m-1'>
                     ⭐
                 </Text>
             </View>
@@ -56,7 +56,7 @@ const FavouriteButton = ({cocktail}) => {
         return (
             <View>
                 <Pressable onPress={handleOnPress}>
-                    <Text>
+                    <Text className = 'text-xl text-center'>
                         ☆
                     </Text>
                 </Pressable>
