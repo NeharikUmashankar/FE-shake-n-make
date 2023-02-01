@@ -23,8 +23,8 @@ const Header = ({title}) => {
     }
 
     return (
-        <View className="flex-column w-full p-0 h-full">
-        <View className="flex-row h-fit justify-around w-full mr-50 pr-50">
+        <View className="w-full">
+        <View className="flex-row h-fit justify-around w-96 mb-3 p-1">
             <Pressable onPress={handleHomeOnPress}>
             <ImageViewer className="justify-start"
                 placeholderImageSource={require('../assets/cocktail.png')}
@@ -33,7 +33,7 @@ const Header = ({title}) => {
                 >
             </ImageViewer>
             </Pressable>
-            <Text>{title}</Text>
+            <Text className = 'text-xl w-2/5 text-center'>{title}</Text>
             <Pressable onPress={typeof loggedUser !== "object" ? handleGuestOnPress : handleUserOnPress }>
             <ImageViewer
             placeholderImageSource={typeof loggedUser!=="object" ? {uri: "https://images.macrumors.com/t/n4CqVR2eujJL-GkUPhv1oao_PmI=/1600x/article-new/2019/04/guest-user-250x250.jpg"}:(loggedUser.avatar ? {uri: loggedUser.avatar} : {uri: "https://www.pngitem.com/pimgs/m/272-2720607_this-icon-for-gender-neutral-user-circle-hd.png"})} logo={true}
@@ -45,12 +45,12 @@ const Header = ({title}) => {
     )
 }
 
-const styles= StyleSheet.create({
-    container: {
-        flex: 1,
-        height: 60,
-        width: 50,
-    }
-})
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    height: 60,
+    width: 50,
+  },
+});
 
-export default Header
+export default Header;
