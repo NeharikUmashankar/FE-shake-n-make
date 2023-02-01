@@ -16,7 +16,7 @@ export default function TabNavigator() {
         <Tab.Navigator screenOptions={{ headerShown: false }}>
             <Tab.Screen name="Cocktails" options={{tabBarIcon: ({size, focused, color}) => {
                 return (
-                    <Image style={{width:size, height:size}} source={{uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmUeemMsbaF3iiEI9fWQPw1DT_m7LPXaaJ7g&usqp=CAU'}}/>
+                    <Image style={{width:size, height:size}} source={{uri: 'https://d1nhio0ox7pgb.cloudfront.net/_img/i_collection_png/256x256/plain/cocktail.png'}}/>
                 )
             }}}>
                 {() => <Stack name="Cocktails" />}
