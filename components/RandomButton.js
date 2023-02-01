@@ -22,7 +22,7 @@ export default RandomButton;
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: "#fff",
+      backgroundColor: "lightestBlue",
       alignItems: "center",
       justifyContent: "center",
     },

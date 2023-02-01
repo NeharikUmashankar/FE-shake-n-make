@@ -1,4 +1,4 @@
-import { View, Text, ScrollView, Button } from "react-native";
+import { View, Text, ScrollView, Pressable } from "react-native";
 import { getFilteredCocktails } from "../api";
 import { useEffect, useState } from "react";
 import { useContext } from "react";
@@ -46,11 +46,11 @@ const FilteredCocktails = ({ route,navigation }) => {
     );
 
   return (
-    <ScrollView>
-      <Text>Here are your filtered cocktails:</Text>
+    <ScrollView className = 'bg-lightestBlue '>
       {filteredCocktailList.map((cocktail) => {
         return (
-          <Button
+          <Pressable
+          className = 'bg-mainBlue p-3 w-1/2 self-center rounded-full my-3'
             key={cocktail.idDrink}
             title={cocktail.strDrink}
             onPress={() => {
@@ -59,7 +59,7 @@ const FilteredCocktails = ({ route,navigation }) => {
                 cocktailId: cocktail.idDrink,
               });
             }}
-          />
+          ><Text className = 'text-center text-white'>{cocktail.strDrink}</Text></Pressable>
         );
       })}
     </ScrollView>
