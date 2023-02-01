@@ -6,6 +6,7 @@ import { AdultContext } from "./AdultContext"
 import Pressable from "react-native/Libraries/Components/Pressable/Pressable"
 import {useNavigation} from '@react-navigation/native'
 import { Text } from "react-native"
+
 const Header = ({title}) => {
     const {over18,setOver18} = useContext(AdultContext)
     const navigation=useNavigation()
@@ -21,7 +22,9 @@ const Header = ({title}) => {
         <View className="flex-column w-full p-0 h-full">
         <View className="flex-row h-fit justify-around w-full mr-50 pr-50">
             <ImageViewer className="justify-start"
-                placeholderImageSource={{uri: "https://freesvg.org/img/bar-15.png"}} logo={true}
+                placeholderImageSource={require('../assets/cocktail.png')}
+                // {{uri: "https://freesvg.org/img/bar-15.png"}} 
+                logo={true}
                 >
             </ImageViewer>
             <Text>{title}</Text>
