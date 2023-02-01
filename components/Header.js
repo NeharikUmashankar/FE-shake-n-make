@@ -17,13 +17,19 @@ const Header = ({title}) => {
         navigation.navigate("Favourites")
     }
 
+    const handleHomeOnPress = () => {
+        navigation.navigate("Home")
+    }
+
     return (
         <View className="flex-column w-full p-0 h-full">
         <View className="flex-row h-fit justify-around w-full mr-50 pr-50">
+            <Pressable onPress={handleHomeOnPress}>
             <ImageViewer className="justify-start"
                 placeholderImageSource={{uri: "https://freesvg.org/img/bar-15.png"}} logo={true}
                 >
             </ImageViewer>
+            </Pressable>
             <Text>{title}</Text>
             <Pressable onPress={typeof loggedUser !== "object" ? handleGuestOnPress : handleUserOnPress }>
             <ImageViewer
