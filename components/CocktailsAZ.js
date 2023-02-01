@@ -51,7 +51,7 @@ const CocktailsAZ = ({ route,navigation }) => {
         return (
           <Pressable
             className="bg-mainBlue p-3 w-1/2 self-center rounded-full my-3"
-            key={cocktail.drinkId}
+            key={cocktail.name}
             title={cocktail.name}
             onPress={() => {
               navigation.navigate("Cocktail", {

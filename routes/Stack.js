@@ -25,9 +25,6 @@ export default MyStack = ({ name, navigation }) => {
         name="Welcome"
         component={LandingScreen}
         options={{
-          headerStyle : {
-            backgroundColor: '#ffffff'
-          },
           headerBackVisible: false,
           headerTitle: (props) => <Header className="" title="Welcome" />,
         }}

@@ -47,7 +47,7 @@ const FavouriteButton = ({cocktail}) => {
     } else if (exists === true) {
         return (
             <View>
-                <Text className = 'text-xl text-center'>
+                <Text className = 'text-xl text-center m-1'>
                     ⭐
                 </Text>
             </View>

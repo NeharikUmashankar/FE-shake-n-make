@@ -33,7 +33,7 @@ const Cocktail = ({ route,navigation }) => {
       setCocktailIngredients(getCocktailIngredients(cocktail));
       setLoading(false);
     })
-  }, []);
+  }, [cocktail]);
 
   const placeholderImage = cocktail.strDrinkThumb;
 
@@ -64,8 +64,9 @@ const Cocktail = ({ route,navigation }) => {
       </Text>
       <View className="bg-sky-100/30 p-4  w-3/5 self-center" key={cocktailName}>
         {cocktailIngredients.map((ingredient, i) => {
+        
           return (
-            <Text className="text-center" key={cocktailName}>
+            <Text className="text-center" key={ingredient}>
               {ingredient}: {cocktailMeasures[i]}{" "}
             </Text>
           );

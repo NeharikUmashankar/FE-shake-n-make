@@ -14,12 +14,12 @@ export default function TabNavigator() {
     // console.log(route,"<<insideTabNavigator")
     return (
         <Tab.Navigator screenOptions={{ headerShown: false }}>
-            <Tab.Screen name="Log-In" options={{tabBarIcon: ({size, focused, color}) => {
+            <Tab.Screen name="Cocktails" options={{tabBarIcon: ({size, focused, color}) => {
                 return (
                     <Image style={{width:size, height:size}} source={{uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmUeemMsbaF3iiEI9fWQPw1DT_m7LPXaaJ7g&usqp=CAU'}}/>
                 )
             }}}>
-                {() => <Stack name="Welcome" />}
+                {() => <Stack name="Cocktails" />}
             </Tab.Screen>
             <Tab.Screen name="Home" options={{tabBarIcon: ({size, focused, color}) => {
                 return (
