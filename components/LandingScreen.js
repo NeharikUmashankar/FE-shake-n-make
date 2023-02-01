@@ -1,11 +1,13 @@
 import { View, Text, Button, StyleSheet, Pressable } from "react-native";
 import React from "react";
-import { useContext } from "react";
+import { useContext,useEffect } from "react";
 import { AdultContext } from "./AdultContext";
+import { FirstVisitContext } from "./FirstVisitContext";
 
 const LandingScreen = ({ navigation }) => {
-  const { setOver18 } = useContext(AdultContext);
-
+  const {firstVisit,setFirstVisit} = useContext(FirstVisitContext)
+  const { over18, setOver18 } = useContext(AdultContext);
+  
   return (
     <View className="bg-lightestBlue h-full">
       <View className="bg-sky-200/30 w-4/5 self-center m-4 mt-12 p-6 rounded-3xl">
@@ -16,6 +18,8 @@ const LandingScreen = ({ navigation }) => {
           <Pressable
             className="bg-mainBlue p-3 w-1/5 self-center rounded-full m-2"
             onPress={() => {
+            setFirstVisit(false)
+
               setOver18(true);
               navigation.navigate("Home");
             }}
@@ -25,6 +29,8 @@ const LandingScreen = ({ navigation }) => {
           <Pressable
             className="bg-mainBlue  p-3 w-1/5 self-center rounded-full m-2"
             onPress={() => {
+            setFirstVisit(false)
+
               setOver18(false);
               navigation.navigate("Home");
             }}

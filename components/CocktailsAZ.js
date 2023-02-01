@@ -5,8 +5,9 @@ import { useContext } from "react";
 import { AdultContext } from "./AdultContext";
 import { UserContext } from "./UserContext";
 
-const CocktailsAZ = ({ navigation }) => {
-  const { letter } = navigation.state.params;
+const CocktailsAZ = ({ route,navigation }) => {
+  const { letter } = route.params;
+
   const { over18 } = useContext(AdultContext);
   const { loggedUser } = useContext(UserContext);
 

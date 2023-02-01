@@ -11,6 +11,7 @@ import cocktailAccelerometer from "../components/Accelerometer";
 import { useContext } from "react";
 import { AdultContext } from "./AdultContext";
 import { UserContext } from "./UserContext";
+import FavouriteButton from "./FavouriteButton";
 
 const RandomCocktails = ({ navigation }) => {
   const [cocktail, setCocktail] = useState({});
@@ -58,6 +59,7 @@ const RandomCocktails = ({ navigation }) => {
         Shake phone to refresh
       </Text>
       <Text className="text-center text-xl bg-sky-100/30 w-3/5 self-center my-4 p-2 rounded-md border border-black">{cocktail.strDrink}</Text>
+      <FavouriteButton cocktail={cocktail} />
       <View className="self-center my-5 rounded-full">
         <ImageViewer
           placeholderImageSource={{ uri: randomCocktailPlaceholderImage }}

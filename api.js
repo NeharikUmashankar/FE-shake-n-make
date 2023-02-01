@@ -38,6 +38,16 @@ export const getCocktailIngredients = (drink) => {
   return result;
 };
 
+export const getFavouriteIngredients = (drink) => {
+  const result = [];
+  for (let element in drink) {
+    if (drink[element] && element.includes("ingredient")) {
+      result.push(drink[element]);
+    }
+  }
+  return result;
+};
+
 export const getCocktailsByLetter = (letter, adult = false) => {
   return cocktailAPI.get(`/search.php?f=${letter}`).then(({ data }) => {
     if (adult) {
@@ -64,6 +74,15 @@ export const getCocktailMeasures = (drink) => {
   const result = [];
   for (let element in drink) {
     if (drink[element] && element.includes("Measure")) {
+      result.push(drink[element]);
+    }
+  }
+  return result;
+};
+export const getFavouriteMeasures = (drink) => {
+  const result = [];
+  for (let element in drink) {
+    if (drink[element] && element.includes("measure")) {
       result.push(drink[element]);
     }
   }
@@ -127,3 +146,32 @@ export const getUserByUsername = (username) => {
     return user;
   });
 };
+
+export const postUser = (userObject) => {
+  return databaseAPI.post('/users',userObject)
+  .then((res) => {
+    return "success"
+  })
+}
+
+export const postCocktailToFavourites = (userId,cocktail) => {
+  return databaseAPI.post(`/users/${userId}/cocktails`,cocktail)
+  .then(({data:{cocktail}}) => {
+    return cocktail
+  })
+}
+
+export const getFavouritesByUserId = (userId) => {
+  return databaseAPI.get(`users/${userId}/cocktails`)
+  .then(({data:{cocktails}}) => {
+    return cocktails
+  })
+}
+
+
+export const deleteCocktailById = (cocktail_id) => {
+  return databaseAPI.delete(`/cocktails/${cocktail_id}`)
+  .then(() => {
+    return "success"
+  })
+}

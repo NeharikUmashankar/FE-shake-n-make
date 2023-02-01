@@ -7,14 +7,17 @@ import {
 import { View, Text, ScrollView } from "react-native";
 import { Image } from "react-native";
 import ImageViewer from "./ImageViewer";
+import FavouriteButton from "./FavouriteButton";
 
-const Cocktail = ({ navigation }) => {
-  const { cocktailName, cocktailId } = navigation.state.params;
+const Cocktail = ({ route,navigation }) => {
+
+
+  const { cocktailName, cocktailId } = route.params;
 
   const [cocktail, setCocktail] = useState({});
   const [cocktailMeasures, setCocktailMeasures] = useState({});
   const [cocktailIngredients, setCocktailIngredients] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setCocktailIngredients(getCocktailIngredients(cocktail));
@@ -23,11 +26,13 @@ const Cocktail = ({ navigation }) => {
 
   useEffect(() => {
     getCocktailById({ cocktailId }).then((info) => {
-      setCocktail(info);
+      return setCocktail(info);
+    })
+    .then(() => {
       getCocktailIngredients(cocktail);
       setCocktailIngredients(getCocktailIngredients(cocktail));
       setLoading(false);
-    });
+    })
   }, []);
 
   const placeholderImage = cocktail.strDrinkThumb;
@@ -41,10 +46,14 @@ const Cocktail = ({ navigation }) => {
 
   return (
     <ScrollView className="bg-lightestBlue" key={cocktailName}>
-      <Text className="text-center text-xl bg-sky-100/30 w-3/5 self-center my-4 p-2 rounded-md border border-black">
+      <View >
+        <Text className="text-center text-xl bg-sky-100/30 w-3/5 self-center my-4 p-2 rounded-md border border-black">
         {" "}
         {cocktailName}
       </Text>
+        <FavouriteButton cocktail={cocktail} />
+      </View>
+
       <View className = 'self-center'>
         <ImageViewer
           placeholderImageSource={{ uri: placeholderImage }}
@@ -73,5 +82,7 @@ const Cocktail = ({ navigation }) => {
     </ScrollView>
   );
 };
+
+
 
 export default Cocktail;

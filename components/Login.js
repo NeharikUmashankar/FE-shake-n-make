@@ -4,27 +4,44 @@ import { getUserByUsername } from "../api";
 import { UserContext } from "./UserContext";
 import { useContext } from "react";
 import { AdultContext } from "./AdultContext";
+import { FirstVisitContext } from "./FirstVisitContext";
+import { getFavouritesByUserId } from "../api";
+import { FavouritesContext } from "./FavouritesContext";
 
 const Login = ({ navigation }) => {
   const { setLoggedUser } = useContext(UserContext);
   const [inputUsername, setInputUsername] = useState("");
   const [inputPassword, setInputPassword] = useState("");
-  const { setOver18 } = useContext(AdultContext);
+  const { over18, setOver18 } = useContext(AdultContext);
+  const { firstVisit, setFirstVisit } = useContext(FirstVisitContext)
+  const { favouritesList, setFavouritesList } = useContext(FavouritesContext)
 
   const handleOnPress = () => {
     getUserByUsername(inputUsername)
       .then((user) => {
         if (user.password !== inputPassword) {
-          alert("Your password is invalid. Please try again.");
+            return Promise.reject({msg: "Your password is invalid. Please try again."});
         } else {
+          alert(`You successfully logged in as ${user.username}`)
+          setFirstVisit(false)
           setLoggedUser(user);
           setOver18(false);
-          navigation.navigate("Home");
+          return getFavouritesByUserId(user.user_id)
         }
       })
+      .then((cocktails) => {
+        return setFavouritesList(cocktails)
+      })
+      .then(() => {
+        navigation.navigate("Home");
+      })
       .catch((err) => {
+        if (err.msg !== undefined) {
+        alert(err.msg)
+        } else {
         if (+err.message.slice(-4) === 404) {
           alert("Your username is invalid. Please try again.");
+        }
         }
       });
   };
@@ -56,7 +73,7 @@ const Login = ({ navigation }) => {
 
       <View className="bg-sky-200/40 m-10 p-5 rounded-3xl">
         <Text className=" text-center m-3">Not got an account? Join us!</Text>
-        <Pressable className="bg-mainBlue p-3 w-2/5 self-center rounded-full">
+        <Pressable className="bg-mainBlue p-3 w-2/5 self-center rounded-full" onPress={() => navigation.navigate("Sign up")}>
           <Text className="text-center text-white">Sign up</Text>
         </Pressable>
       </View>
