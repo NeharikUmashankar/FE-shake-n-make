@@ -11,12 +11,10 @@ const Header = ({title}) => {
     const {over18,setOver18} = useContext(AdultContext)
     const navigation=useNavigation()
     const {loggedUser,setLoggedUser} = useContext(UserContext)
-    const handleGuestOnPress = () => {
-        navigation.navigate("Sign up")
+    const handleOnPress = () => {
+        navigation.navigate("Profile")
     }
-    const handleUserOnPress = () => {
-        navigation.navigate("Favourites")
-    }
+   
 
     const handleHomeOnPress = () => {
         navigation.navigate("Home")
@@ -32,9 +30,12 @@ const Header = ({title}) => {
                 logo={true}
                 >
             </ImageViewer>
+
+
             </Pressable>
             <Text className = 'text-xl w-2/5 text-center'>{title}</Text>
             <Pressable onPress={typeof loggedUser !== "object" ? handleGuestOnPress : handleUserOnPress }>
+
             <ImageViewer
             placeholderImageSource={typeof loggedUser!=="object" ? {uri: "https://images.macrumors.com/t/n4CqVR2eujJL-GkUPhv1oao_PmI=/1600x/article-new/2019/04/guest-user-250x250.jpg"}:(loggedUser.avatar ? {uri: loggedUser.avatar} : {uri: "https://www.pngitem.com/pimgs/m/272-2720607_this-icon-for-gender-neutral-user-circle-hd.png"})} logo={true}
             ></ImageViewer>

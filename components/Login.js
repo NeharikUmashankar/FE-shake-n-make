@@ -1,4 +1,6 @@
-import { Text, Button, View, TextInput, Pressable } from "react-native";
+
+import { Text, Button, View, TextInput, Pressable, StyleSheet, Image } from "react-native";
+
 import { useState } from "react";
 import { getUserByUsername } from "../api";
 import { UserContext } from "./UserContext";
@@ -7,6 +9,7 @@ import { AdultContext } from "./AdultContext";
 import { FirstVisitContext } from "./FirstVisitContext";
 import { getFavouritesByUserId } from "../api";
 import { FavouritesContext } from "./FavouritesContext";
+import Modal from 'react-native-modal'
 
 const Login = ({ navigation }) => {
   const { setLoggedUser } = useContext(UserContext);
@@ -15,10 +18,13 @@ const Login = ({ navigation }) => {
   const { over18, setOver18 } = useContext(AdultContext);
   const { firstVisit, setFirstVisit } = useContext(FirstVisitContext)
   const { favouritesList, setFavouritesList } = useContext(FavouritesContext)
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleOnPress = () => {
+    setIsLoading(true)
     getUserByUsername(inputUsername)
       .then((user) => {
+        setIsLoading(false)
         if (user.password !== inputPassword) {
             return Promise.reject({msg: "Your password is invalid. Please try again."});
         } else {
@@ -36,6 +42,7 @@ const Login = ({ navigation }) => {
         navigation.navigate("Home");
       })
       .catch((err) => {
+        setIsLoading(false)
         if (err.msg !== undefined) {
         alert(err.msg)
         } else {
@@ -47,7 +54,14 @@ const Login = ({ navigation }) => {
   };
 
   return (
+   
     <View className="bg-lightestBlue h-full">
+      <Modal isVisible={isLoading}>
+        <View className="text-white rounded-3xl flex-column w-full h-full justify-center items-center  m-0 p-0 bg-[#537AB0] opacity-80">
+          <Text className="text-white" style={styles.text}> Logging in...</Text>
+          <Image className="w-25 h-25" source={require('../assets/Spinner-1s-200px.gif')}></Image>
+        </View>
+      </Modal>
       <View className="m-10 p-6 bg-sky-200/40 rounded-3xl my-10">
         <TextInput
           className="my-1 bg-sky-100/20 rounded-md border border-black pl-2"
@@ -81,5 +95,13 @@ const Login = ({ navigation }) => {
   );
 };
 // }
+
+const styles = StyleSheet.create({
+
+  text: {
+    color: "white",
+    fontSize: 50
+  }
+})
 
 export default Login;

@@ -175,3 +175,12 @@ export const deleteCocktailById = (cocktail_id) => {
     return "success"
   })
 }
+
+export const patchUserById = (user_id,userObj) => {
+  console.log(`/users/i/${user_id}`)
+  console.log(userObj)
+  return databaseAPI.patch(`/users/i/${user_id}`,userObj)
+  .then((res) => {
+    console.log("success")
+  })
+}
