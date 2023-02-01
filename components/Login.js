@@ -1,4 +1,4 @@
-import { Text, Button, View, TextInput } from "react-native";
+import { Text, Button, View, TextInput, StyleSheet, Image } from "react-native";
 import { useState } from "react";
 import { getUserByUsername } from "../api";
 import { UserContext } from "./UserContext";
@@ -7,6 +7,7 @@ import { AdultContext } from "./AdultContext";
 import { FirstVisitContext } from "./FirstVisitContext";
 import { getFavouritesByUserId } from "../api";
 import { FavouritesContext } from "./FavouritesContext";
+import Modal from 'react-native-modal'
 
 const Login = ({ navigation }) => {
   const { loggedUser, setLoggedUser } = useContext(UserContext);
@@ -15,10 +16,13 @@ const Login = ({ navigation }) => {
   const { over18, setOver18 } = useContext(AdultContext);
   const { firstVisit, setFirstVisit } = useContext(FirstVisitContext)
   const { favouritesList, setFavouritesList } = useContext(FavouritesContext)
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleOnPress = () => {
+    setIsLoading(true)
     getUserByUsername(inputUsername)
       .then((user) => {
+        setIsLoading(false)
         if (user.password !== inputPassword) {
             return Promise.reject({msg: "Your password is invalid. Please try again."});
         } else {
@@ -36,6 +40,7 @@ const Login = ({ navigation }) => {
         navigation.navigate("Home");
       })
       .catch((err) => {
+        setIsLoading(false)
         if (err.msg !== undefined) {
         alert(err.msg)
         } else {
@@ -48,6 +53,12 @@ const Login = ({ navigation }) => {
 
   return (
     <View>
+      <Modal isVisible={isLoading}>
+        <View className="text-white rounded-3xl flex-column w-full h-full justify-center items-center  m-0 p-0 bg-[#537AB0] opacity-80">
+          <Text className="text-white" style={styles.text}> Logging in...</Text>
+          <Image className="w-25 h-25" source={require('../assets/Spinner-1s-200px.gif')}></Image>
+        </View>
+      </Modal>
       <Text>Please enter your username and password.</Text>
       <TextInput
         value={inputUsername}
@@ -69,5 +80,13 @@ const Login = ({ navigation }) => {
   );
 };
 // }
+
+const styles = StyleSheet.create({
+
+  text: {
+    color: "white",
+    fontSize: 50
+  }
+})
 
 export default Login;

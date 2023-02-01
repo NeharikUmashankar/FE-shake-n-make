@@ -14,6 +14,8 @@ import Login from "../components/Login";
 import SignUp from "../components/SignUp";
 import ViewFavourites from "../components/ViewFavourites";
 import Header from "../components/Header";
+import Profile from "../components/Profile";
+import Edit from "../components/Edit";
 const Stack = createNativeStackNavigator();
 // export default createAppContainer(HomeStack);
 export default MyStack = ({ name, navigation}) => {
@@ -60,6 +62,12 @@ export default MyStack = ({ name, navigation}) => {
                 options={{ headerBackVisible: false,headerTitle: (props) => <Header title="Sign up"/> }}
             />
             <Stack.Screen name="Favourites" component={ViewFavourites}
+                options={{ headerBackVisible: false,headerTitle: (props) => <Header title="My favourites" /> }}
+            />
+            <Stack.Screen name="Profile" component={Profile}
+                options={{ headerBackVisible: false,headerTitle: (props) => <Header title="My favourites" /> }}
+            />
+            <Stack.Screen name="Edit" component={Edit}
                 options={{ headerBackVisible: false,headerTitle: (props) => <Header title="My favourites" /> }}
             />
 
