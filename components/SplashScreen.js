@@ -34,7 +34,7 @@ export const Splash = (isAppReady = props.isAppReady) => {
     if (state === FADE_IN_IMAGE) {
       Animated.timing(imageOpacity, {
         toValue: 1,
-        duration: 3000, // Fade in duration
+        duration: 4000, // Fade in duration
         useNativeDriver: true,
       }).start(() => {
         setState(WAIT_FOR_APP_TO_BE_READY);
@@ -72,6 +72,16 @@ export const Splash = (isAppReady = props.isAppReady) => {
     >
       <Animated.Image
         source={require("../assets/cocktail.png")}
+        fadeDuration={0}
+        onLoad={() => {
+          setState(FADE_IN_IMAGE);
+        }}
+        style={[style.image, { opacity: imageOpacity }]}
+        resizeMode="contain"
+      />
+
+    <Animated.Image
+        source={require("../assets/ShakeLogo.png")}
         fadeDuration={0}
         onLoad={() => {
           setState(FADE_IN_IMAGE);

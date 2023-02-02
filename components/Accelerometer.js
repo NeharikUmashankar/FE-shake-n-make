@@ -12,7 +12,7 @@ export default function cocktailAccelerometer({ navigation }) {
   const [subscription, setSubscription] = useState(null);
 
 
-  if (x >= 0.55 && y >= 0.55) {
+  if (x >= 0.45 && y >= 0.45) {
     console.log("Refresh")
     navigation.replace("Random cocktail", {over18:true})
   }
