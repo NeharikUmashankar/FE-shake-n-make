@@ -29,7 +29,7 @@ function Edit({ navigation }) {
     const [isAvatarError, setIsAvatarError] = useState(true)
     const [newAvatar, setNewAvatar] = useState("")
     const [isRadioSelection, setIsRadioSelection] = useState(false)
-    const [invalidExistingPassword, setInvalidExistingPassword] = useState(false)
+    const [invalidExistingPassword, setInvalidExistingPassword] = useState(true)
     const [isConfirming, setIsConfirming] = useState(false)
     const [radioButtons, setRadioButtons] = useState([{
         id: '1',
@@ -366,9 +366,9 @@ function Edit({ navigation }) {
                 {forSave.length !== 0 && (
                     <View>
                         <Modal isVisible={isConfirming}>
-                            <View className={invalidExistingPassword ? "text-white rounded-3xl flex-column w-full h-full justify-center items-center  m-0 p-0 bg-amber-500 opacity-80" : "text-white rounded-3xl flex-column w-full h-full justify-center items-center  m-0 p-0 bg-[#537AB0] opacity-80"}>
+                            <View className={invalidExistingPassword ? "text-white rounded-3xl flex-column w-full h-full justify-center items-center  m-0 p-0 bg-[#FFBF00] opacity-80" : "text-white rounded-3xl flex-column w-full h-full justify-center items-center  m-0 p-0 bg-[#98FB98] opacity-80"}>
                                 <Text className="text-white" style={styles.text}> Enter previous password to confirm and proceed to login page.</Text>
-                                <TextInput style={styles.textInput} value={existingPasswordInput} onChangeText={(inputText) => { setExistingPasswordInput(inputText) }} onEndEditing={
+                                <TextInput secureTextEntry={true} style={styles.textInput} value={existingPasswordInput} onChangeText={(inputText) => { setExistingPasswordInput(inputText) }} onEndEditing={
                                     () => {
 
                                         if (existingPasswordInput !== loggedUser.password) {
@@ -389,7 +389,11 @@ function Edit({ navigation }) {
                                         <Text>Submit</Text>
                                     </Pressable>
                                 )}
-
+                                <Pressable onPress={() => {navigation.replace("Edit")}}>
+                                    <Text>
+                                        Cancel update
+                                    </Text>
+                                </Pressable>
                             </View>
                         </Modal>
                         <Text>Fields currently set to update:</Text>
