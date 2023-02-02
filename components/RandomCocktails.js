@@ -12,6 +12,7 @@ import { useContext } from "react";
 import { AdultContext } from "./AdultContext";
 import { UserContext } from "./UserContext";
 import FavouriteButton from "./FavouriteButton";
+import { Motion } from "@legendapp/motion";
 
 const RandomCocktails = ({ navigation }) => {
   const [cocktail, setCocktail] = useState({});
@@ -55,9 +56,9 @@ const RandomCocktails = ({ navigation }) => {
 
   return (
     <ScrollView className="bg-lightestBlue">
-      <Text className="p-3 m-4 text-center border border-darkestBlue bg-sky-300/40">
+      <Motion.Text initial={{x:-100}} animate={{x:0}} transition={{type:"spring", damping: 4, stiffness:200}} className="p-3 m-4 text-center border border-darkestBlue bg-sky-300/40">
         Shake phone to refresh
-      </Text>
+      </Motion.Text>
       <Text className="text-center text-xl bg-sky-100/30 w-3/5 self-center my-4 p-2 rounded-md border border-black">{cocktail.strDrink}</Text>
       <FavouriteButton cocktail={cocktail} />
       <View className="self-center my-5 rounded-full">

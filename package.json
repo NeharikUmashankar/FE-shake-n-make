@@ -9,6 +9,7 @@
     "build-css": "tailwindcss build src/styles.css -o components/styles.css"
   },
   "dependencies": {
+    "@legendapp/motion": "^2.2.0",
     "@react-navigation/bottom-tabs": "^6.5.3",
     "@react-navigation/native-stack": "^6.9.8",
     "axios": "^1.2.3",
