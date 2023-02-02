@@ -65,10 +65,10 @@ const RandomCocktails = ({ navigation }) => {
           placeholderImageSource={{ uri: randomCocktailPlaceholderImage }}
         ></ImageViewer>
       </View>
-      <Text className="bg-sky-100/30 mt-8 w-2/6 p-2 text-center self-center text-xl">
+      <Text className="bg-sky-100/30 mt-8 w-2/6 p-2 text-center self-center text-xl rounded-t-lg">
         Ingredients
       </Text>
-      <View className="bg-sky-100/30 p-4  w-3/5 self-center">
+      <View className="bg-sky-100/30 p-4  w-3/5 self-center rounded-lg">
         {cocktailIngredients.map((ingredient, i) => {
           return (
             <Text className = 'text-center' key={ingredient}>
@@ -78,10 +78,10 @@ const RandomCocktails = ({ navigation }) => {
         })}
       </View>
 
-      <Text className="bg-sky-100/30 mt-8 w-2/6 p-2 text-center self-center text-xl">
+      <Text className="bg-sky-100/30 mt-8 w-2/6 p-2 text-center self-center text-xl rounded-t-lg">
         Recipe
       </Text>
-      <Text className="bg-sky-100/30 mx-6 mb-6 p-4 w-4/5 text-center self-center">
+      <Text className="bg-sky-100/30 mx-6 mb-6 p-4 w-4/5 text-center self-center rounded-lg">
         {cocktail.strInstructions}
       </Text>
       <Accelerometer navigation={navigation}></Accelerometer>

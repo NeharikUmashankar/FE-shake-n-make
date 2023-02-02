@@ -63,28 +63,39 @@ function Profile({ navigation }) {
   } else if (typeof loggedUser === "object") {
     return (
       <ScrollView className="bg-lightestBlue">
+
+
         <View className="flex-row justify-between">
+
+
           <Pressable
             onPress={handleLogOut}
-            className="overflow-hidden w-10 h-10 border-solid border-2 border-black rounded-lg"
-          >
-            <View className="flex-row justify-start items-center border-2 border-neutral-50 rounded-xl p-1">
+            className="overflow-hidden h-12 m-2 bg-mainBlue rounded-lg">
+            <View className="flex-row justify-start items-center rounded-xl p-1">
               <Image
                 className="overflow-hidden w-10 h-10 border-solid border-2 border-black rounded-lg"
                 source={{
                   uri: "https://static.vecteezy.com/system/resources/thumbnails/006/693/054/small/logout-icon-template-black-color-editable-log-out-icon-symbol-flat-illustration-for-graphic-and-web-design-free-vector.jpg",
                 }}
               />
-              <Text className="font-extrabold">Sign out</Text>
+              <Text className="font-extrabold text-white mx-2">Sign out</Text>
             </View>
           </Pressable>
-          <Pressable onPress={handleEdit} className="bg-white">
-            <View className="flex-row justify-end items-center border-2 border-neutral-50 rounded-xl p-1">
-              <Text className="font-extrabold">Edit user</Text>
-              <Text className="text-3xl bg-white rounded-lg">✏️</Text>
+
+
+
+          <Pressable onPress={handleEdit} className="overflow-hidden h-12 m-2 bg-mainBlue rounded-lg">
+            <View className="flex-row justify-end items-center rounded-xl p-1">
+              <Text className="font-extrabold text-white mx-2">Edit user</Text>
+              <Text className="text-3xl bg-white rounded-lg mt-0.5">✏️</Text>
             </View>
           </Pressable>
+
+
         </View>
+
+
+
 
         <View className = 'bg-sky-100/40 m-4 rounded-3xl pt-6'>
           <View className="flex-row w-full justify-center">

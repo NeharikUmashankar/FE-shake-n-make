@@ -32,10 +32,10 @@ const ViewFavourites = () => {
                     placeholderImageSource={{ uri: cocktail.thumbnail }}
                   ></ImageViewer>
                 </View>
-                <Text className="bg-sky-100/30 mt-8 w-2/6 p-2 text-center self-center text-xl">
+                <Text className="bg-sky-100/30 mt-8 w-2/5 p-2 px-3 text-center self-center text-xl rounded-t-lg">
                   Ingredients
                 </Text>
-                <View className="bg-sky-100/30 p-4  w-3/5 self-center">
+                <View className="bg-sky-100/30 p-4  w-3/5 self-center rounded-lg">
                   {cocktailIngredients.map((ingredient, i) => {
                     return (
                       <Text className="text-center" key={ingredient}>
@@ -44,8 +44,8 @@ const ViewFavourites = () => {
                     );
                   })}
                 </View>
-                <Text className=" bg-sky-100/30 mt-8 w-2/6 text-center self-center text-xl p-2"> Recipe</Text>
-                <Text className = 'bg-sky-100/30 mx-6 p-4 text-center self-center h-3/5'>{cocktail.instructions}</Text>
+                <Text className=" bg-sky-100/30 mt-8 w-2/6 text-center self-center text-xl p-2 rounded-t-lg"> Recipe</Text>
+                <Text className = 'bg-sky-100/30 mx-6 p-4 text-center self-center h-fit rounded-lg'>{cocktail.instructions}</Text>
               </ScrollView>
             );
           })}
