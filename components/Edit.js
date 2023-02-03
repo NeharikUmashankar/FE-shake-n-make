@@ -48,21 +48,28 @@ function Edit({ navigation }) {
       const result = newArr.filter((child) => {
         return child !== element;
       });
-      return newArr;
+      return result;
     });
     setForEdit((currArr) => {
       const newArr = [...currArr];
       const result = newArr.filter((child) => {
         return child !== element;
       });
-      return newArr;
+      return result;
     });
     setNewUser((currUser) => {
+      const refObj = {
+        "Age bracket": "over18",
+        "Password":"password",
+        "Avatar":"avatar"
+      }
       const newUser = { ...currUser };
-      delete newUser.element;
+      const label = refObj[element]
+      delete newUser[label];
       return newUser;
     });
   };
+  
   useEffect(() => {
     setForSave((currArr) => {
       const newArr = [...currArr];
